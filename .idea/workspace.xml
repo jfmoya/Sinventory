@@ -1,7 +1,124 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="50cf5965-af60-4f03-bafc-17008a11f8af" name="Default Changelist" comment="" />
+    <list default="true" id="50cf5965-af60-4f03-bafc-17008a11f8af" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/APUNTO_CEB.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/APUNTO_2.0_IMG.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/APUNTO_RECEPCION_CEB.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/APUNTO_RECEPCION_CEB.spec" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/APUNTO_RECEPCION_CEB_small.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/APUNTO_RECEPCION_CEB_small.spec" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CONF_APUNTO.ini" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CONF_APUNTO.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/AP_CEB_LOGO.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/CDM v2.12.28 WHQL Certified/Static/amd64/ftd2xx.lib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/CDM v2.12.28 WHQL Certified/Static/i386/ftd2xx.lib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/CDM v2.12.28 WHQL Certified/amd64/ftbusui.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/CDM v2.12.28 WHQL Certified/amd64/ftcserco.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/CDM v2.12.28 WHQL Certified/amd64/ftd2xx.lib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/CDM v2.12.28 WHQL Certified/amd64/ftd2xx64.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/CDM v2.12.28 WHQL Certified/amd64/ftdibus.sys" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/CDM v2.12.28 WHQL Certified/amd64/ftlang.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/CDM v2.12.28 WHQL Certified/amd64/ftser2k.sys" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/CDM v2.12.28 WHQL Certified/amd64/ftserui2.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/CDM v2.12.28 WHQL Certified/ftd2xx.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/CDM v2.12.28 WHQL Certified/ftdibus.cat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/CDM v2.12.28 WHQL Certified/ftdibus.inf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/CDM v2.12.28 WHQL Certified/ftdiport.cat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/CDM v2.12.28 WHQL Certified/ftdiport.inf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/CDM v2.12.28 WHQL Certified/i386/ftbusui.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/CDM v2.12.28 WHQL Certified/i386/ftcserco.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/CDM v2.12.28 WHQL Certified/i386/ftd2xx.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/CDM v2.12.28 WHQL Certified/i386/ftd2xx.lib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/CDM v2.12.28 WHQL Certified/i386/ftdibus.sys" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/CDM v2.12.28 WHQL Certified/i386/ftlang.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/CDM v2.12.28 WHQL Certified/i386/ftser2k.sys" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/CDM v2.12.28 WHQL Certified/i386/ftserui2.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/CI-2001AB_ENG_UM_20140819.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/CONF_APUNTO.ini" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/CONF_APUNTO.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/LOGOAAO2.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/LogoMSN.bmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/PL2303_Prolific_DriverInstaller_v1180.exe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/ScaleEmulator/ScaleEmulator.ino" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/ScaleTare/ScaleTare.ino" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/TMVirtualPortDriver860d.exe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/_CARGA_respaldo.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/_CARGA_socios.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/_LEECTOR DE BALANZA.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/_UPDATE_ci_socios.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/apunto_ceb_bu20200213.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/caret.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/casos.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/ceb_db5.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/ceb_db8.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/ceb_inserts.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/ceb_tables.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/gui_queries.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/imgexe.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/load_script.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/make_apunto_bu.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/make_apunto_bu1.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/make_apunto_bu2.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/maxwin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/ordeno_logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/pcico.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/pcserv.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/pro_populator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/prov_lote3.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/proveedores_prueba.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/pyinstaller.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/reporte.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/reporte_h.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/reportequincena.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/soc_tra_res.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UTILIDADES/tiny85_blink/tiny85_blink.ino" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/APUNTO_RECEPCION_CEB/APUNTO_RECEPCION_CEB.exe.manifest" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/APUNTO_RECEPCION_CEB/Analysis-00.toc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/APUNTO_RECEPCION_CEB/EXE-00.toc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/APUNTO_RECEPCION_CEB/PKG-00.pkg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/APUNTO_RECEPCION_CEB/PKG-00.toc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/APUNTO_RECEPCION_CEB/PYZ-00.pyz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/APUNTO_RECEPCION_CEB/PYZ-00.toc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/APUNTO_RECEPCION_CEB/Tree-00.toc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/APUNTO_RECEPCION_CEB/Tree-01.toc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/APUNTO_RECEPCION_CEB/base_library.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/APUNTO_RECEPCION_CEB/warn-APUNTO_RECEPCION_CEB.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/APUNTO_RECEPCION_CEB/xref-APUNTO_RECEPCION_CEB.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/APUNTO_RECEPCION_CEB_small/APUNTO_RECEPCION_CEB_small.exe.manifest" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/APUNTO_RECEPCION_CEB_small/Analysis-00.toc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/APUNTO_RECEPCION_CEB_small/EXE-00.toc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/APUNTO_RECEPCION_CEB_small/PKG-00.pkg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/APUNTO_RECEPCION_CEB_small/PKG-00.toc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/APUNTO_RECEPCION_CEB_small/PYZ-00.pyz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/APUNTO_RECEPCION_CEB_small/PYZ-00.toc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/APUNTO_RECEPCION_CEB_small/Tree-00.toc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/APUNTO_RECEPCION_CEB_small/Tree-01.toc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/APUNTO_RECEPCION_CEB_small/base_library.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/APUNTO_RECEPCION_CEB_small/warn-APUNTO_RECEPCION_CEB_small.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/APUNTO_RECEPCION_CEB_small/xref-APUNTO_RECEPCION_CEB_small.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/carga_socios.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/correccion_cantidad.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/correccion_codigo.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/correccion_ingreso.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/APUNTO_RECEPCION_CEB.exe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/APUNTO_RECEPCION_CEB_small.exe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/CONF_APUNTO.ini" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reporte_ampm.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reporte_global.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reporte_socio.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/respaldo_transacciones.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scale_ep_p3.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scale_serial_CAS_p3.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scale_serial_p3.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scale_sql_p3.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,6 +131,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1VEVhoPNZtioMPJFIz6eEb8z1cH" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -22,6 +142,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
@@ -34,7 +155,7 @@
       <recent name="C:\Users\JUAN\Documents\python\APUNTO_CEB" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.APUNTO_RECEPCION_CEB_small">
+  <component name="RunManager" selected="Python.APUNTO_2.0_IMG">
     <configuration name="APUNTO_2.0_IMG" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="APUNTO_CEB" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -142,11 +263,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.APUNTO_2.0_IMG" />
         <item itemvalue="Python.APUNTO_RECEPCION_CEB_small" />
         <item itemvalue="Python.APUNTO_RECEPCION_CEB" />
         <item itemvalue="Python.scale_sql_p3" />
         <item itemvalue="Python.CAS_serial" />
-        <item itemvalue="Python.APUNTO_2.0_IMG" />
       </list>
     </recent_temporary>
   </component>
@@ -176,28 +297,40 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
+    <state x="167" y="0" key="#APUNTO_RECEPCION_CEB_small" timestamp="1583241175639">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="167" y="0" key="#APUNTO_RECEPCION_CEB_small/0.0.1366.728@0.0.1366.728" timestamp="1583241175639" />
     <state x="-1506" y="3" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578709640879">
       <screen x="-1920" y="-173" width="1920" height="1040" />
     </state>
     <state x="-1506" y="3" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1600.860/-1920.-173.1920.1040@-1920.-173.1920.1040" timestamp="1578709640879" />
-    <state width="1921" height="273" key="GridCell.Tab.0.bottom" timestamp="1581709229008">
-      <screen x="-1920" y="-182" width="1920" height="1040" />
+    <state x="463" y="105" key="FileChooserDialogImpl" timestamp="1583241505342">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state x="463" y="105" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1583241505342" />
+    <state width="1345" height="69" key="GridCell.Tab.0.bottom" timestamp="1583241524735">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1345" height="69" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1583241524735" />
     <state width="1899" height="419" key="GridCell.Tab.0.bottom/0.0.1600.860/-1920.-173.1920.1040@-1920.-173.1920.1040" timestamp="1578924836924" />
     <state width="1921" height="273" key="GridCell.Tab.0.bottom/0.0.1600.860/-1920.-182.1920.1040@-1920.-182.1920.1040" timestamp="1581709229008" />
-    <state width="1921" height="273" key="GridCell.Tab.0.center" timestamp="1581709229008">
-      <screen x="-1920" y="-182" width="1920" height="1040" />
+    <state width="1345" height="69" key="GridCell.Tab.0.center" timestamp="1583241524735">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state width="1345" height="69" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1583241524735" />
     <state width="1899" height="419" key="GridCell.Tab.0.center/0.0.1600.860/-1920.-173.1920.1040@-1920.-173.1920.1040" timestamp="1578924836924" />
     <state width="1921" height="273" key="GridCell.Tab.0.center/0.0.1600.860/-1920.-182.1920.1040@-1920.-182.1920.1040" timestamp="1581709229008" />
-    <state width="1921" height="273" key="GridCell.Tab.0.left" timestamp="1581709229008">
-      <screen x="-1920" y="-182" width="1920" height="1040" />
+    <state width="1345" height="69" key="GridCell.Tab.0.left" timestamp="1583241524735">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state width="1345" height="69" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1583241524735" />
     <state width="1899" height="419" key="GridCell.Tab.0.left/0.0.1600.860/-1920.-173.1920.1040@-1920.-173.1920.1040" timestamp="1578924836924" />
     <state width="1921" height="273" key="GridCell.Tab.0.left/0.0.1600.860/-1920.-182.1920.1040@-1920.-182.1920.1040" timestamp="1581709229008" />
-    <state width="1921" height="273" key="GridCell.Tab.0.right" timestamp="1581709229008">
-      <screen x="-1920" y="-182" width="1920" height="1040" />
+    <state width="1345" height="69" key="GridCell.Tab.0.right" timestamp="1583241524735">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state width="1345" height="69" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1583241524735" />
     <state width="1899" height="419" key="GridCell.Tab.0.right/0.0.1600.860/-1920.-173.1920.1040@-1920.-173.1920.1040" timestamp="1578924836924" />
     <state width="1921" height="273" key="GridCell.Tab.0.right/0.0.1600.860/-1920.-182.1920.1040@-1920.-182.1920.1040" timestamp="1581709229008" />
     <state width="1899" height="421" key="GridCell.Tab.1.bottom" timestamp="1579587478824">
@@ -216,13 +349,15 @@
       <screen x="-1920" y="-182" width="1920" height="1040" />
     </state>
     <state width="1899" height="421" key="GridCell.Tab.1.right/0.0.1600.860/-1920.-182.1920.1040@-1920.-182.1920.1040" timestamp="1579587478824" />
-    <state x="301" y="73" key="SettingsEditor" timestamp="1576818406630">
-      <screen x="0" y="0" width="1600" height="860" />
+    <state x="257" y="13" key="SettingsEditor" timestamp="1583241273721">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state x="257" y="13" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1583241273721" />
     <state x="301" y="73" key="SettingsEditor/0.0.1600.860@0.0.1600.860" timestamp="1576818406630" />
-    <state x="-1325" y="126" key="com.intellij.ide.util.TipDialog" timestamp="1581709082427">
-      <screen x="-1920" y="-182" width="1920" height="1040" />
+    <state x="423" y="216" key="com.intellij.ide.util.TipDialog" timestamp="1583240975676">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state x="423" y="216" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1583240975676" />
     <state x="-1325" y="135" key="com.intellij.ide.util.TipDialog/0.0.1600.860/-1920.-173.1920.1040@-1920.-173.1920.1040" timestamp="1578768072020" />
     <state x="-1325" y="126" key="com.intellij.ide.util.TipDialog/0.0.1600.860/-1920.-182.1920.1040@-1920.-182.1920.1040" timestamp="1581709082427" />
     <state x="496" y="255" key="com.intellij.ide.util.TipDialog/0.0.1600.860/1600.0.1280.680@0.0.1600.860" timestamp="1578677604083" />
