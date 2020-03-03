@@ -1,0 +1,8 @@
+LOAD DATA LOCAL INFILE 'C:/Users/ALFREDO/Desktop/prov_lote3.csv'
+INTO TABLE proveedor
+FIELDS TERMINATED BY ';'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS
+(pro_codigo,pro_cacreg,pro_cedula,pro_nombre,pro_telf);
+
+

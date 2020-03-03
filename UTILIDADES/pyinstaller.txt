@@ -1,0 +1,1 @@
+C:\Users\JUAN\Documents\python\APUNTO_CEB>pyinstaller -w -F -i "C:\Users\JUAN\Documents\python\APUNTO_CEB\UTILIDADES\pcserv.ico" APUNTO_RECEPCION_CEB_small.py
