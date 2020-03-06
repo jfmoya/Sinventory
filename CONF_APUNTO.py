@@ -3,8 +3,6 @@ import configparser
 config = configparser.ConfigParser()
 config.read('CONF_APUNTO.ini')
 
-cliente = 'cambiar'
-
 user = config['DB']['USER']
 password = config['DB']['PASSWORD']
 host = config['DB']['HOST']

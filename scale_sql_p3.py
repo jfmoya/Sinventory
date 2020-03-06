@@ -135,6 +135,7 @@ def t_verify(t_num, t_pro_codigo, t_weight):
     else:
         return 0, ''
 
+
 def t_update(new_pro_codigo, t_num, t_pro_codigo, t_weight ):
     """Argumento new_pro_codigo, t_num, t_pro_codigo, t_weight utiliza t_verify() para comprobar veracidad de ticket,
     isin() para comprobar existencia de new_pro_codigo, actualiza pro_codigo con new_pro_codigo, atualiza oper a valor 2,
@@ -167,6 +168,7 @@ def t_update(new_pro_codigo, t_num, t_pro_codigo, t_weight ):
     else:
         return 'Numero de socio incorrecto'
 
+
 def loader(archivo):
     """Argumento archivo, lee lista de socios formato con separacion tab, utiliza isin,
     carga nuevos socios a tabla proveedor, retorna mensaje y lista de socios cargados a proveedor,
@@ -183,8 +185,8 @@ def loader(archivo):
 
         curs.execute("SELECT idnum FROM proveedor")
         idnum_L = [i[0] for i in curs]
-##        for n in idnum_L:
-##            print(n, type(n))
+        # for n in idnum_L:
+        #     print(n, type(n))
         while line != '':
             line = fdata.readline()
             # print (line)
@@ -207,6 +209,37 @@ def loader(archivo):
     except:
         # print ('ARCHIVO NO TIENE EL FORMATO')
         return 0, 'ARCHIVO NO TIENE EL FORMATO', socios
+
+
+def p_loader(pro_cacreg = '', pro_ruc = '', pro_nombre = '', pro_fecnac = '', pro_telf = '', pro_correo = ''):
+    """Ingresa proveedor argumnetos ruc, nombre, fecnac, telf, correo. Verifica que no exista ruc previamente."""
+    cnx = mysql.connector.connect(user=CONF_APUNTO.user, password=CONF_APUNTO.password,
+                                  host=CONF_APUNTO.host, database=CONF_APUNTO.database)
+    curs = cnx.cursor()
+
+    Q = f'SELECT {pro_ruc} IN(SELECT pro_ruc FROM proveedor)'
+    curs.execute(Q)
+    (r,) = curs.fetchone()
+    if not r:
+        Q = f'INSERT INTO proveedor (pro_cacreg, pro_ruc, pro_nombre, pro_fecnac, pro_telf, pro_correo) ' \
+            f'VALUES ({pro_cacreg}, {pro_ruc}, "{pro_nombre}", "{pro_fecnac}", "{pro_telf}", "{pro_correo}") '
+        print(Q)
+        curs.execute(Q)
+        cnx.commit()
+        ms = 'Registro exitoso'
+    else:
+        ms = 'RUC ya registrado'
+        # print(ms)
+
+    Q = f'SELECT pro_codigo + pro_cacreg, pro_nombre FROM proveedor WHERE pro_ruc = {pro_ruc} '
+    curs.execute(Q)
+    r = curs.fetchone()
+    # print(r)
+
+    curs.close()
+    cnx.close()
+    return ms, r
+
 
 def t_socio(idnum, inicio, final):
     """Realiza query  con idnum,  fecha inicial y final, str, retorna lista de transacciones tuples con num, hora y weight
@@ -241,6 +274,7 @@ def t_socio(idnum, inicio, final):
     else:
         return ('Numero de socio incorrecto',)
 
+
 def t_correct(new_weight, t_num, t_idnum, t_weight ):
     """Argumento new_idnum, t_num, t_idnum, t_weight utiliza t_verify() para comprobar veracidad de ticket,
     isin() para comprobar existencia de new_idnum, modifica row user = 2, inserta 2 rows para anular invalido
@@ -272,6 +306,7 @@ def t_correct(new_weight, t_num, t_idnum, t_weight ):
     else:
         return 'Transaccion no puede ser modificada'
 
+
 def t_insert(fecha, idnum, weight):
     """Argumento fecha, idnum, weight, oper, usa isin() para comprobar existencia de idnum,
     inserta 1 row en transaccion con los datos"""
@@ -292,6 +327,7 @@ def t_insert(fecha, idnum, weight):
 
     else:
          return 'Transaccion no puede ser insertada'
+
 
 def reporte(inicio, final):
     """Realiza query maximo de 16 dias con fecha inicial y final
@@ -343,6 +379,7 @@ def reporte(inicio, final):
     else:
         # print ('Rango de fechas incorrecto')
         return 'Rango de fechas incorrecto o excede 16 días',''
+
 
 def reporte2(inicio, final):
     """Realiza query maximo de 16 dias con fecha inicial y final retorna lista de tuples con idnum, nname,
