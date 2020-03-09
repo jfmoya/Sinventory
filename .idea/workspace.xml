@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="50cf5965-af60-4f03-bafc-17008a11f8af" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/carga_proveedor.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/insert_proveedor.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/report_proveedor.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CONF_APUNTO.ini" beforeDir="false" afterPath="$PROJECT_DIR$/CONF_APUNTO.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CONF_APUNTO.py" beforeDir="false" afterPath="$PROJECT_DIR$/CONF_APUNTO.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UTILIDADES/apunto_ceb_bu20200213.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/UTILIDADES/ceb_db8.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/UTILIDADES/ceb_tables.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/carga_proveedor.py" beforeDir="false" afterPath="$PROJECT_DIR$/edit_proveedor.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scale_sql_p3.py" beforeDir="false" afterPath="$PROJECT_DIR$/scale_sql_p3.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,8 +45,8 @@
       <recent name="C:\Users\JUAN\Documents\python\APUNTO_CEB" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.carga_proveedor">
-    <configuration name="APUNTO_2.0_IMG" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.insert_proveedor (1)">
+    <configuration name="edit_proveedor" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="APUNTO_CEB" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -61,7 +58,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/APUNTO_2.0_IMG.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/edit_proveedor.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -70,7 +67,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="APUNTO_RECEPCION_CEB" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="insert_proveedor (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="APUNTO_CEB" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -82,7 +79,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/APUNTO_RECEPCION_CEB.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/insert_proveedor.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -91,7 +88,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="APUNTO_RECEPCION_CEB_small" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="insert_proveedor" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="APUNTO_CEB" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -103,7 +100,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/APUNTO_RECEPCION_CEB_small.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\JUAN\Documents\APUNTO_CEB\insert_proveedor.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -112,7 +109,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="carga_proveedor" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="report_proveedor" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="APUNTO_CEB" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -124,7 +121,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/carga_proveedor.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/report_proveedor.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -156,11 +153,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.carga_proveedor" />
+        <item itemvalue="Python.insert_proveedor (1)" />
+        <item itemvalue="Python.edit_proveedor" />
+        <item itemvalue="Python.report_proveedor" />
         <item itemvalue="Python.scale_sql_p3" />
-        <item itemvalue="Python.APUNTO_2.0_IMG" />
-        <item itemvalue="Python.APUNTO_RECEPCION_CEB_small" />
-        <item itemvalue="Python.APUNTO_RECEPCION_CEB" />
+        <item itemvalue="Python.insert_proveedor" />
       </list>
     </recent_temporary>
   </component>
@@ -202,28 +199,28 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="105" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1583241505342" />
-    <state width="1345" height="207" key="GridCell.Tab.0.bottom" timestamp="1583496679102">
+    <state width="1345" height="199" key="GridCell.Tab.0.bottom" timestamp="1583774559145">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="207" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1583496679102" />
+    <state width="1345" height="199" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1583774559145" />
     <state width="1899" height="419" key="GridCell.Tab.0.bottom/0.0.1600.860/-1920.-173.1920.1040@-1920.-173.1920.1040" timestamp="1578924836924" />
     <state width="1921" height="273" key="GridCell.Tab.0.bottom/0.0.1600.860/-1920.-182.1920.1040@-1920.-182.1920.1040" timestamp="1581709229008" />
-    <state width="1345" height="207" key="GridCell.Tab.0.center" timestamp="1583496679102">
+    <state width="1345" height="199" key="GridCell.Tab.0.center" timestamp="1583774559145">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="207" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1583496679102" />
+    <state width="1345" height="199" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1583774559145" />
     <state width="1899" height="419" key="GridCell.Tab.0.center/0.0.1600.860/-1920.-173.1920.1040@-1920.-173.1920.1040" timestamp="1578924836924" />
     <state width="1921" height="273" key="GridCell.Tab.0.center/0.0.1600.860/-1920.-182.1920.1040@-1920.-182.1920.1040" timestamp="1581709229008" />
-    <state width="1345" height="207" key="GridCell.Tab.0.left" timestamp="1583496679102">
+    <state width="1345" height="199" key="GridCell.Tab.0.left" timestamp="1583774559145">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="207" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1583496679102" />
+    <state width="1345" height="199" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1583774559145" />
     <state width="1899" height="419" key="GridCell.Tab.0.left/0.0.1600.860/-1920.-173.1920.1040@-1920.-173.1920.1040" timestamp="1578924836924" />
     <state width="1921" height="273" key="GridCell.Tab.0.left/0.0.1600.860/-1920.-182.1920.1040@-1920.-182.1920.1040" timestamp="1581709229008" />
-    <state width="1345" height="207" key="GridCell.Tab.0.right" timestamp="1583496679102">
+    <state width="1345" height="199" key="GridCell.Tab.0.right" timestamp="1583774559145">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="207" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1583496679102" />
+    <state width="1345" height="199" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1583774559145" />
     <state width="1899" height="419" key="GridCell.Tab.0.right/0.0.1600.860/-1920.-173.1920.1040@-1920.-173.1920.1040" timestamp="1578924836924" />
     <state width="1921" height="273" key="GridCell.Tab.0.right/0.0.1600.860/-1920.-182.1920.1040@-1920.-182.1920.1040" timestamp="1581709229008" />
     <state width="1899" height="421" key="GridCell.Tab.1.bottom" timestamp="1579587478824">
@@ -247,10 +244,10 @@
     </state>
     <state x="257" y="13" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1583241273721" />
     <state x="301" y="73" key="SettingsEditor/0.0.1600.860@0.0.1600.860" timestamp="1576818406630" />
-    <state x="423" y="216" key="com.intellij.ide.util.TipDialog" timestamp="1583493914159">
+    <state x="423" y="216" key="com.intellij.ide.util.TipDialog" timestamp="1583747904374">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="423" y="216" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1583493914159" />
+    <state x="423" y="216" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1583747904374" />
     <state x="-1325" y="135" key="com.intellij.ide.util.TipDialog/0.0.1600.860/-1920.-173.1920.1040@-1920.-173.1920.1040" timestamp="1578768072020" />
     <state x="-1325" y="126" key="com.intellij.ide.util.TipDialog/0.0.1600.860/-1920.-182.1920.1040@-1920.-182.1920.1040" timestamp="1581709082427" />
     <state x="496" y="255" key="com.intellij.ide.util.TipDialog/0.0.1600.860/1600.0.1280.680@0.0.1600.860" timestamp="1578677604083" />
@@ -260,6 +257,10 @@
       <screen x="-1920" y="-173" width="1920" height="1040" />
     </state>
     <state x="-1306" y="-37" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1600.860/-1920.-173.1920.1040@-1920.-173.1920.1040" timestamp="1578871582911" />
+    <state x="492" y="281" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1583773928253">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="492" y="281" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1583773928253" />
     <state x="-1528" y="84" width="1616" height="762" key="dock-window-1" timestamp="1579572045824">
       <screen x="-1920" y="-182" width="1920" height="1040" />
     </state>

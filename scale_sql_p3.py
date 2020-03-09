@@ -45,9 +45,48 @@ def namer(pro_codigo):
         return ''
 
 
+def proveedor_r(pro_codigo):
+    """Argumento pro_codigo en str, retorna datos de proveedor tabla existe en tabla proveedor
+     ó '' si no existe en tabla"""
+    if isin(pro_codigo):
+        cnx = mysql.connector.connect(user=CONF_APUNTO.user, password=CONF_APUNTO.password,
+                                      host=CONF_APUNTO.host, database=CONF_APUNTO.database)
+        cursor = cnx.cursor()
+        q1 = f'SELECT pro_ruc, pro_nombre, pro_fecnac, pro_telf, pro_correo FROM proveedor ' \
+             f'WHERE pro_codigo + pro_cacreg = {pro_codigo}'
+        # print (q1)
+        cursor.execute(q1)
+        for r in cursor:
+            # print('cursor: ', cursor, r, r[0])
+            pass
+        cursor.close()
+        cnx.close()
+        # print(r)
+        return r
+    else:
+        return ''
+
+
+def proveedores_r(cac_codigo):
+    """Argumento cac_codigo en str, retorna lista de proveedores en tabla """
+    cnx = mysql.connector.connect(user=CONF_APUNTO.user, password=CONF_APUNTO.password,
+                                  host=CONF_APUNTO.host, database=CONF_APUNTO.database)
+    cursor = cnx.cursor()
+    q1 = f'SELECT pro_codigo + pro_cacreg, pro_ruc, pro_nombre, pro_fecnac, pro_telf, pro_correo ' \
+         f'FROM proveedor WHERE pro_cacreg = {cac_codigo}'
+    # print (q1)
+    cursor.execute(q1)
+    r = cursor.fetchall()
+    cursor.close()
+    cnx.close()
+    # for line in r:
+    #     print(line)
+    return r
+
+
 def saver(pro_codigo, pro_cacreg, cac_codigo, prd_codigo, tra_pesobruto, tra_numgavetas, tra_tara, tra_pesoneto,
           tra_valor, ope_codigo, tra_merma):
-    """True graba argumentos pro_codigo, weight y oper en tabla transaccion"""
+    """True graba TRANSACCION , argumentos pro_codigo, weight y oper en tabla transaccion"""
     cnx = mysql.connector.connect(user=CONF_APUNTO.user, password=CONF_APUNTO.password,
                                   host=CONF_APUNTO.host, database=CONF_APUNTO.database)
     cursor = cnx.cursor()
@@ -179,8 +218,8 @@ def loader(archivo):
         fname = archivo+'.txt'
         fdata = open(fname, 'r')
         line = ' '
-        cnx = mysql.connector.connect(user = CONF_APUNTO.user, password = CONF_APUNTO.password,
-                                      host = CONF_APUNTO.host, database = CONF_APUNTO.database)
+        cnx = mysql.connector.connect(user=CONF_APUNTO.user, password=CONF_APUNTO.password,
+                                      host=CONF_APUNTO.host, database=CONF_APUNTO.database)
         curs = cnx.cursor()
 
         curs.execute("SELECT idnum FROM proveedor")
@@ -211,7 +250,7 @@ def loader(archivo):
         return 0, 'ARCHIVO NO TIENE EL FORMATO', socios
 
 
-def p_loader(pro_cacreg = '', pro_ruc = '', pro_nombre = '', pro_fecnac = '', pro_telf = '', pro_correo = ''):
+def p_loader(pro_cacreg='', pro_ruc='', pro_nombre='', pro_fecnac='', pro_telf='', pro_correo=''):
     """Ingresa proveedor argumnetos ruc, nombre, fecnac, telf, correo. Verifica que no exista ruc previamente."""
     cnx = mysql.connector.connect(user=CONF_APUNTO.user, password=CONF_APUNTO.password,
                                   host=CONF_APUNTO.host, database=CONF_APUNTO.database)
@@ -223,7 +262,7 @@ def p_loader(pro_cacreg = '', pro_ruc = '', pro_nombre = '', pro_fecnac = '', pr
     if not r:
         Q = f'INSERT INTO proveedor (pro_cacreg, pro_ruc, pro_nombre, pro_fecnac, pro_telf, pro_correo) ' \
             f'VALUES ({pro_cacreg}, {pro_ruc}, "{pro_nombre}", "{pro_fecnac}", "{pro_telf}", "{pro_correo}") '
-        print(Q)
+        # print(Q)
         curs.execute(Q)
         cnx.commit()
         ms = 'Registro exitoso'
@@ -241,14 +280,43 @@ def p_loader(pro_cacreg = '', pro_ruc = '', pro_nombre = '', pro_fecnac = '', pr
     return ms, r
 
 
+def p_update(pro_ruc='', pro_nombre='', pro_fecnac='', pro_telf='', pro_correo=''):
+    """Ingresa proveedor argumnetos ruc, nombre, fecnac, telf, correo. Verifica que no exista ruc previamente."""
+    cnx = mysql.connector.connect(user=CONF_APUNTO.user, password=CONF_APUNTO.password,
+                                  host=CONF_APUNTO.host, database=CONF_APUNTO.database)
+    curs = cnx.cursor()
+
+    Q = f'UPDATE proveedor ' \
+        f'SET pro_nombre = "{pro_nombre}", ' \
+        f'pro_fecnac = "{pro_fecnac}", ' \
+        f'pro_telf = {pro_telf}, ' \
+        f'pro_correo = "{pro_correo}" ' \
+        f'WHERE pro_ruc = {pro_ruc}'
+    # print(Q)
+    curs.execute(Q)
+    cnx.commit()
+    ms = 'Actualización exitosa'
+
+    Q = f'SELECT pro_codigo + pro_cacreg, pro_ruc, pro_nombre FROM proveedor WHERE pro_ruc = {pro_ruc}'
+    # print(Q)
+    curs.execute(Q)
+    r = curs.fetchone()
+    # print(r)
+
+    curs.close()
+    cnx.close()
+    return ms, r
+
+
 def t_socio(idnum, inicio, final):
-    """Realiza query  con idnum,  fecha inicial y final, str, retorna lista de transacciones tuples con num, hora y weight
-    o retorna mensajes de error cuando las fechas son ilegibles, lista de transacciones en un rango de fechas"""
+    """Realiza query  con idnum,  fecha inicial y final, str, retorna lista de transacciones tuples con num,
+     hora y weight o retorna mensajes de error cuando las fechas son ilegibles, lista de transacciones en un
+     rango de fechas"""
     try:
         dia_i = datetime.datetime.strptime(inicio, '%Y-%m-%d')
         dia_f = datetime.datetime.strptime(final, '%Y-%m-%d')
         # print (dia_i, dia_f)
-    except:
+    except ValueError:
         # print ('Fecha incorrecta')
         return 'Fecha incorrecta',''
     if dia_f < dia_i:

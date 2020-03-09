@@ -1,12 +1,14 @@
 import tkinter
+from tkinter import messagebox
 import scale_sql_p3
+import datetime
 
 color = ('#99c6f0', '#9fd6f0', '#c6e3f9', '#ecf8f9', '#ecf1f2', '#f25235', '#eee860', '#64f28a', '#3749ac')
 cac_nombre = scale_sql_p3.cac_nombre_r()  # DEFAULT
 cac_codigo = scale_sql_p3.cac_codigo_r()  # DEFAULT
 
 
-class InProv:
+class InsProv:
     def grabar(self):
         """Funcion command del boton grabar, COMPARA MENSAJE DE scale_sql_p3.update PARA EJECUTAR IF STATEMENT"""
         ruc = self.txt_in1.get()
@@ -20,12 +22,17 @@ class InProv:
             self.mensaje.insert(0, 'Inserte nombre')
             ruc = ''
         fecnac = self.txt_in3.get()
+        try:
+            datetime.datetime.strptime(fecnac, '%Y-%m-%d')
+        except ValueError:
+            self.mensaje.insert(0, 'Formato de fecha incorrecto')
+            ruc = ''
         telf = self.txt_in4.get()
         correo = self.txt_in5.get()
-        if ruc != '':
+        if ruc != '' and messagebox.askyesno('Apunto', 'Crear proveedor?', default='no'):
             ms = scale_sql_p3.p_loader(cac_codigo, ruc, nombre, fecnac, telf, correo)
             self.mensaje.insert(0, f'{ms[0]} -- {ms[1][0]}: {ms[1][1]}')
-            self.lbl_61.config(text=f'{ms[1][0]}')
+            self.lbl_6.config(text=f'{ms[1][0]}')
 
     def borrar(self):
         self.txt_in1.delete(0, 'end')
@@ -33,7 +40,7 @@ class InProv:
         self.txt_in3.delete(0, 'end')
         self.txt_in4.delete(0, 'end')
         self.txt_in5.delete(0, 'end')
-        self.lbl_61.config(text='')
+        self.lbl_6.config(text='')
 
     def __init__(self, master):
         win = tkinter.Frame(master)
@@ -69,8 +76,8 @@ class InProv:
 
         lbl_6 = tkinter.Label(win, text="CODIGO ASIGNADO: ", bg=color[7], font='arial 15')
         lbl_6.grid(row=6, column=0, pady=5, padx=10, sticky="EW")
-        self.lbl_61 = tkinter.Label(win, width=6, bg=color[7], font='arial 15')
-        self.lbl_61.grid(row=6, column=1, pady=5, sticky="w")
+        self.lbl_6 = tkinter.Label(win, width=6, bg=color[7], font='arial 15')
+        self.lbl_6.grid(row=6, column=1, pady=5, sticky="w")
 
         btn_borrar = tkinter.Button(win, text="BORRAR", command=self.borrar, width=10, font='arial 12', height=1)
         btn_borrar.grid(row=7, column=0, pady=15)
@@ -88,5 +95,5 @@ class InProv:
 
 
 root = tkinter.Tk()
-app = InProv(root)
+app = InsProv(root)
 root.mainloop()
