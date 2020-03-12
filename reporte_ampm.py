@@ -44,7 +44,7 @@ class RAmPm:
         color = ('#99c6f0','#9fd6f0','#c6e3f9','#ecf8f9','#ecf1f2','#f25235','#eee860','#64f28a','#3749ac')
         win = tkinter.Frame(master)
         
-        lbl_1 = tkinter.Label(win, text=CONF_APUNTO.cliente,
+        lbl_1 = tkinter.Label(win, text='text',
                                 bg = color[0], font = 'arial 14', fg = color[8])
         lbl_1.grid(columnspan = 2, pady=10)
 
@@ -75,3 +75,8 @@ class RAmPm:
         self.mensaje.grid(row = 6, columnspan = 2, padx=10)
 
         win.pack()
+
+
+root = tkinter.Tk()
+app = RAmPm(root)
+root.mainloop()

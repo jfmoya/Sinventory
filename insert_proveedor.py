@@ -27,12 +27,13 @@ class InsProv:
         except ValueError:
             self.mensaje.insert(0, 'Formato de fecha incorrecto')
             ruc = ''
-        telf = self.txt_in4.get()
-        correo = self.txt_in5.get()
+        direccion = self.txt_in4.get()
+        telf = self.txt_in5.get()
+        correo = self.txt_in6.get()
         if ruc != '' and messagebox.askyesno('Apunto', 'Crear proveedor?', default='no'):
-            ms = scale_sql_p3.p_loader(cac_codigo, ruc, nombre, fecnac, telf, correo)
+            ms = scale_sql_p3.p_loader(cac_codigo, ruc, nombre, fecnac, direccion, telf, correo)
             self.mensaje.insert(0, f'{ms[0]} -- {ms[1][0]}: {ms[1][1]}')
-            self.lbl_6.config(text=f'{ms[1][0]}')
+            self.lbl_7.config(text=f'{ms[1][0]}')
 
     def borrar(self):
         self.txt_in1.delete(0, 'end')
@@ -40,7 +41,8 @@ class InsProv:
         self.txt_in3.delete(0, 'end')
         self.txt_in4.delete(0, 'end')
         self.txt_in5.delete(0, 'end')
-        self.lbl_6.config(text='')
+        self.txt_in6.delete(0, 'end')
+        self.lbl_7.config(text='')
 
     def __init__(self, master):
         win = tkinter.Frame(master)
@@ -64,32 +66,37 @@ class InsProv:
         self.txt_in3 = tkinter.Entry(win, width=10, font='arial 12')
         self.txt_in3.grid(row=3, column=1, pady=5, sticky="W")
 
-        lbl_4 = tkinter.Label(win, text="# TELEFONO : ", bg=color[2], font='arial 10')
+        lbl_4 = tkinter.Label(win, text="DIRECCION : ", bg=color[2], font='arial 10')
         lbl_4.grid(row=4, column=0, pady=5, padx=10, sticky="EW")
         self.txt_in4 = tkinter.Entry(win, width=40, font='arial 12')
         self.txt_in4.grid(row=4, column=1, pady=5, sticky="W")
 
-        lbl_5 = tkinter.Label(win, text="CORREO : ", bg=color[2], font='arial 10')
+        lbl_5 = tkinter.Label(win, text="# TELEFONO : ", bg=color[2], font='arial 10')
         lbl_5.grid(row=5, column=0, pady=5, padx=10, sticky="EW")
         self.txt_in5 = tkinter.Entry(win, width=40, font='arial 12')
         self.txt_in5.grid(row=5, column=1, pady=5, sticky="W")
 
-        lbl_6 = tkinter.Label(win, text="CODIGO ASIGNADO: ", bg=color[7], font='arial 15')
+        lbl_6 = tkinter.Label(win, text="CORREO : ", bg=color[2], font='arial 10')
         lbl_6.grid(row=6, column=0, pady=5, padx=10, sticky="EW")
-        self.lbl_6 = tkinter.Label(win, width=6, bg=color[7], font='arial 15')
-        self.lbl_6.grid(row=6, column=1, pady=5, sticky="w")
+        self.txt_in6 = tkinter.Entry(win, width=40, font='arial 12')
+        self.txt_in6.grid(row=6, column=1, pady=5, sticky="W")
+
+        lbl_7 = tkinter.Label(win, text="CODIGO ASIGNADO: ", bg=color[7], font='arial 15')
+        lbl_7.grid(row=7, column=0, pady=5, padx=10, sticky="EW")
+        self.lbl_7 = tkinter.Label(win, width=6, bg=color[7], font='arial 15')
+        self.lbl_7.grid(row=7, column=1, pady=5, sticky="w")
 
         btn_borrar = tkinter.Button(win, text="BORRAR", command=self.borrar, width=10, font='arial 12', height=1)
-        btn_borrar.grid(row=7, column=0, pady=15)
+        btn_borrar.grid(row=8, column=0, pady=15)
         btn_borrar.configure(bg=color[5])
 
         btn_grabar = tkinter.Button(win, text="GRABAR", command=self.grabar, width=10, font='arial 12', height=1)
-        btn_grabar.grid(row=7, column=1, pady=15)
+        btn_grabar.grid(row=8, column=1, pady=15)
         btn_grabar.configure(bg=color[7])
 
         self.mensaje = tkinter.Listbox(win, height=6, width=70, font='arial 12')
         self.mensaje.insert("end", 'Ingrese la informacion a registrar')
-        self.mensaje.grid(row=8, columnspan=2, padx=10, pady=10)
+        self.mensaje.grid(row=9, columnspan=2, padx=10, pady=10)
 
         win.pack()
 

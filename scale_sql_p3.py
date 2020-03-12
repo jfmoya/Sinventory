@@ -45,15 +45,15 @@ def namer(pro_codigo):
         return ''
 
 
-def proveedor_r(pro_codigo):
-    """Argumento pro_codigo en str, retorna datos de proveedor tabla existe en tabla proveedor
+def proveedor_r(codigo):
+    """Argumento codigo en str, retorna datos de proveedor tabla existe en tabla proveedor
      ó '' si no existe en tabla"""
-    if isin(pro_codigo):
+    if isin(codigo):
         cnx = mysql.connector.connect(user=CONF_APUNTO.user, password=CONF_APUNTO.password,
                                       host=CONF_APUNTO.host, database=CONF_APUNTO.database)
         cursor = cnx.cursor()
-        q1 = f'SELECT pro_ruc, pro_nombre, pro_fecnac, pro_telf, pro_correo FROM proveedor ' \
-             f'WHERE pro_codigo + pro_cacreg = {pro_codigo}'
+        q1 = f'SELECT CAST(pro_ruc AS CHAR), pro_nombre, pro_fecnac, pro_direccion, pro_telf, pro_correo ' \
+             f'FROM proveedor WHERE pro_codigo + pro_cacreg = {codigo}'
         # print (q1)
         cursor.execute(q1)
         for r in cursor:
@@ -72,10 +72,10 @@ def proveedores_r(cac_codigo):
     cnx = mysql.connector.connect(user=CONF_APUNTO.user, password=CONF_APUNTO.password,
                                   host=CONF_APUNTO.host, database=CONF_APUNTO.database)
     cursor = cnx.cursor()
-    q1 = f'SELECT pro_codigo + pro_cacreg, pro_ruc, pro_nombre, pro_fecnac, pro_telf, pro_correo ' \
-         f'FROM proveedor WHERE pro_cacreg = {cac_codigo}'
-    # print (q1)
-    cursor.execute(q1)
+    Q = f'SELECT pro_codigo + pro_cacreg, CAST(pro_ruc AS CHAR), pro_nombre, pro_fecnac, pro_direccion, pro_telf, ' \
+        f'pro_correo FROM proveedor WHERE pro_cacreg = {cac_codigo}'
+    # print (Q)
+    cursor.execute(Q)
     r = cursor.fetchall()
     cursor.close()
     cnx.close()
@@ -86,7 +86,7 @@ def proveedores_r(cac_codigo):
 
 def saver(pro_codigo, pro_cacreg, cac_codigo, prd_codigo, tra_pesobruto, tra_numgavetas, tra_tara, tra_pesoneto,
           tra_valor, ope_codigo, tra_merma):
-    """True graba TRANSACCION , argumentos pro_codigo, weight y oper en tabla transaccion"""
+    """Graba TRANSACCION , argumentos pro_codigo, weight y oper en tabla transaccion"""
     cnx = mysql.connector.connect(user=CONF_APUNTO.user, password=CONF_APUNTO.password,
                                   host=CONF_APUNTO.host, database=CONF_APUNTO.database)
     cursor = cnx.cursor()
@@ -103,7 +103,7 @@ def saver(pro_codigo, pro_cacreg, cac_codigo, prd_codigo, tra_pesobruto, tra_num
 
 
 def totdia():
-    """Retorna la suma de TODO el producto entregado en el presente dia, Type decimal"""
+    """Retorna la suma total del producto entregado en el presente dia, Type decimal"""
     cnx = mysql.connector.connect(user=CONF_APUNTO.user, password=CONF_APUNTO.password,
                                   host=CONF_APUNTO.host, database=CONF_APUNTO.database)
     cursor = cnx.cursor()
@@ -136,7 +136,7 @@ def entrega():
 
 
 def acum(idnum):
-    """Argumento pro_codigo, retorna Decimal, total weight acumulado del periodo de corte actual para pro_codigo"""
+    """Argumento pro_codigo, retorna total acumulado desde el ultimo corte actual para pro_codigo"""
     cnx = mysql.connector.connect(user=CONF_APUNTO.user, password=CONF_APUNTO.password,
                                   host=CONF_APUNTO.host, database=CONF_APUNTO.database)
     cursor = cnx.cursor()
@@ -250,7 +250,7 @@ def loader(archivo):
         return 0, 'ARCHIVO NO TIENE EL FORMATO', socios
 
 
-def p_loader(pro_cacreg='', pro_ruc='', pro_nombre='', pro_fecnac='', pro_telf='', pro_correo=''):
+def p_loader(pro_cacreg='', pro_ruc='', pro_nombre='', pro_fecnac='', pro_direccion='', pro_telf='', pro_correo=''):
     """Ingresa proveedor argumnetos ruc, nombre, fecnac, telf, correo. Verifica que no exista ruc previamente."""
     cnx = mysql.connector.connect(user=CONF_APUNTO.user, password=CONF_APUNTO.password,
                                   host=CONF_APUNTO.host, database=CONF_APUNTO.database)
@@ -260,8 +260,10 @@ def p_loader(pro_cacreg='', pro_ruc='', pro_nombre='', pro_fecnac='', pro_telf='
     curs.execute(Q)
     (r,) = curs.fetchone()
     if not r:
-        Q = f'INSERT INTO proveedor (pro_cacreg, pro_ruc, pro_nombre, pro_fecnac, pro_telf, pro_correo) ' \
-            f'VALUES ({pro_cacreg}, {pro_ruc}, "{pro_nombre}", "{pro_fecnac}", "{pro_telf}", "{pro_correo}") '
+        Q = f'INSERT INTO proveedor (pro_cacreg, pro_ruc, pro_nombre, pro_fecnac, ' \
+            f'pro_direccion, pro_telf, pro_correo) ' \
+            f'VALUES ({pro_cacreg}, "{pro_ruc}", "{pro_nombre}", "{pro_fecnac}", ' \
+            f'"{pro_direccion}", "{pro_telf}", "{pro_correo}") '
         # print(Q)
         curs.execute(Q)
         cnx.commit()
@@ -280,7 +282,7 @@ def p_loader(pro_cacreg='', pro_ruc='', pro_nombre='', pro_fecnac='', pro_telf='
     return ms, r
 
 
-def p_update(pro_ruc='', pro_nombre='', pro_fecnac='', pro_telf='', pro_correo=''):
+def p_update(pro_ruc='', pro_nombre='', pro_fecnac='', pro_direccion='', pro_telf='', pro_correo=''):
     """Ingresa proveedor argumnetos ruc, nombre, fecnac, telf, correo. Verifica que no exista ruc previamente."""
     cnx = mysql.connector.connect(user=CONF_APUNTO.user, password=CONF_APUNTO.password,
                                   host=CONF_APUNTO.host, database=CONF_APUNTO.database)
@@ -289,7 +291,8 @@ def p_update(pro_ruc='', pro_nombre='', pro_fecnac='', pro_telf='', pro_correo='
     Q = f'UPDATE proveedor ' \
         f'SET pro_nombre = "{pro_nombre}", ' \
         f'pro_fecnac = "{pro_fecnac}", ' \
-        f'pro_telf = {pro_telf}, ' \
+        f'pro_direccion = "{pro_direccion}", ' \
+        f'pro_telf = "{pro_telf}", ' \
         f'pro_correo = "{pro_correo}" ' \
         f'WHERE pro_ruc = {pro_ruc}'
     # print(Q)
@@ -306,41 +309,6 @@ def p_update(pro_ruc='', pro_nombre='', pro_fecnac='', pro_telf='', pro_correo='
     curs.close()
     cnx.close()
     return ms, r
-
-
-def t_socio(idnum, inicio, final):
-    """Realiza query  con idnum,  fecha inicial y final, str, retorna lista de transacciones tuples con num,
-     hora y weight o retorna mensajes de error cuando las fechas son ilegibles, lista de transacciones en un
-     rango de fechas"""
-    try:
-        dia_i = datetime.datetime.strptime(inicio, '%Y-%m-%d')
-        dia_f = datetime.datetime.strptime(final, '%Y-%m-%d')
-        # print (dia_i, dia_f)
-    except ValueError:
-        # print ('Fecha incorrecta')
-        return 'Fecha incorrecta',''
-    if dia_f < dia_i:
-        return 'RANGO DE FECHAS incorrecto',''
-    elif isin(idnum):
-        header = namer(idnum)
-        cnx = mysql.connector.connect(user = CONF_APUNTO.user, password = CONF_APUNTO.password,
-                                      host = CONF_APUNTO.host, database = CONF_APUNTO.database)
-        cursor = cnx.cursor()
-        Q = 'SELECT num, hora, weight FROM transaccion WHERE idnum = '+idnum+' \
-        and date(hora)>= "'+dia_i.strftime('%Y-%m-%d')+'" and date(hora)<="'+dia_f.strftime('%Y-%m-%d')+'" \
-        order by hora'
-        # print (Q)
-        cursor.execute(Q)
-        rep = []
-        for r in cursor:
-            r1 = (r[0], str(r[1]), r[2])
-            # print (r1) 
-            rep.append(r1)
-        cursor.close()
-        cnx.close()
-        return rep, header
-    else:
-        return ('Numero de socio incorrecto',)
 
 
 def t_correct(new_weight, t_num, t_idnum, t_weight ):
@@ -508,20 +476,58 @@ def reporte2(inicio, final):
         return 'Rango de fechas incorrecto o excede 16 días',''
 
 
-def tara_r(prd_codigo = ''):
-    """Gets tara de gaveta from product table"""
+def reporte_t(inicio, final):
+    """Reporte transacciones, * query con fecha inicio y dinal, retorna lista de tuples con transacciones"""
     cnx = mysql.connector.connect(user=CONF_APUNTO.user, password=CONF_APUNTO.password,
                                   host=CONF_APUNTO.host, database=CONF_APUNTO.database)
     cursor = cnx.cursor()
-    q1 = 'SELECT prd_taragaveta FROM producto WHERE prd_codigo = 100001'
-    # print (q1)
-    cursor.execute(q1)
-    for (r,) in cursor:
-        # print('cursor: ', cursor, '\n', r)
-        pass
+    Q = f'SELECT column_name FROM information_schema.columns ' \
+        f'WHERE table_schema = "apunto_ceb" AND table_name = "transaccion"'
+    cursor.execute(Q)
+    r0 = cursor.fetchall()
+    Q = f'SELECT * FROM transaccion ' \
+        f'WHERE DATE(tra_fecreg) >= "{inicio}" AND DATE(tra_fecreg) <= "{final}"'
+    # print(Q)
+    cursor.execute(Q)
+    r1 = cursor.fetchall()
     cursor.close()
     cnx.close()
-    return r
+    return r0, r1
+
+
+def t_socio(idnum, inicio, final):
+    """Realiza query  con idnum,  fecha inicial y final, str, retorna lista de transacciones tuples con num,
+     hora y weight o retorna mensajes de error cuando las fechas son ilegibles, lista de transacciones en un
+     rango de fechas"""
+    try:
+        dia_i = datetime.datetime.strptime(inicio, '%Y-%m-%d')
+        dia_f = datetime.datetime.strptime(final, '%Y-%m-%d')
+        # print (dia_i, dia_f)
+    except ValueError:
+        # print ('Fecha incorrecta')
+        return 'Fecha incorrecta',''
+    if dia_f < dia_i:
+        return 'RANGO DE FECHAS incorrecto',''
+    elif isin(idnum):
+        header = namer(idnum)
+        cnx = mysql.connector.connect(user = CONF_APUNTO.user, password = CONF_APUNTO.password,
+                                      host = CONF_APUNTO.host, database = CONF_APUNTO.database)
+        cursor = cnx.cursor()
+        Q = 'SELECT num, hora, weight FROM transaccion WHERE idnum = '+idnum+' \
+        and date(hora)>= "'+dia_i.strftime('%Y-%m-%d')+'" and date(hora)<="'+dia_f.strftime('%Y-%m-%d')+'" \
+        order by hora'
+        # print (Q)
+        cursor.execute(Q)
+        rep = []
+        for r in cursor:
+            r1 = (r[0], str(r[1]), r[2])
+            # print (r1)
+            rep.append(r1)
+        cursor.close()
+        cnx.close()
+        return rep, header
+    else:
+        return ('Numero de socio incorrecto',)
 
 
 def cac_codigo_r():
@@ -554,6 +560,45 @@ def cac_nombre_r():
     return r
 
 
+def producto_u(prd_codigo, prd_nombre, prd_preciokg, prd_taragaveta, prd_merma):
+    """Actualiza producto argumnetos codigo, nombre, preciokg, taragaveta, merma"""
+    cnx = mysql.connector.connect(user=CONF_APUNTO.user, password=CONF_APUNTO.password,
+                                  host=CONF_APUNTO.host, database=CONF_APUNTO.database)
+    curs = cnx.cursor()
+    Q = f'UPDATE producto ' \
+        f'SET prd_nombre = "{prd_nombre}", ' \
+        f'prd_preciokg = {prd_preciokg}, ' \
+        f'prd_taragaveta = {prd_taragaveta}, ' \
+        f'prd_merma = {prd_merma} ' \
+        f'WHERE prd_codigo = {prd_codigo}'
+    # print(Q)
+    curs.execute(Q)
+    cnx.commit()
+    ms = 'Actualización exitosa'
+    Q = f'SELECT prd_nombre, prd_preciokg, prd_taragaveta, prd_merma FROM producto WHERE prd_codigo = {prd_codigo}'
+    # print(Q)
+    curs.execute(Q)
+    r = curs.fetchone()
+    # print(r)
+    curs.close()
+    cnx.close()
+    return ms, r
+
+
+def producto_r(prd_codigo=''):
+    cnx = mysql.connector.connect(user=CONF_APUNTO.user, password=CONF_APUNTO.password,
+                                  host=CONF_APUNTO.host, database=CONF_APUNTO.database)
+    cursor = cnx.cursor()
+    q1 = f'SELECT * FROM producto WHERE prd_codigo = {prd_codigo}'
+    # print (q1)
+    cursor.execute(q1)
+    r = cursor.fetchall()
+    cursor.close()
+    cnx.close()
+    # print(r)
+    return r
+
+
 def prd_preciokg_r(prd_codigo):
     cnx = mysql.connector.connect(user=CONF_APUNTO.user, password=CONF_APUNTO.password,
                                   host=CONF_APUNTO.host, database=CONF_APUNTO.database)
@@ -569,7 +614,7 @@ def prd_preciokg_r(prd_codigo):
     return r
 
 
-def merma_r(prd_codigo = ''):
+def merma_r(prd_codigo=''):
     """Gets tara de gaveta from product table"""
     cnx = mysql.connector.connect(user=CONF_APUNTO.user, password=CONF_APUNTO.password,
                                   host=CONF_APUNTO.host, database=CONF_APUNTO.database)
@@ -583,4 +628,20 @@ def merma_r(prd_codigo = ''):
     cursor.close()
     cnx.close()
     # print(r)
+    return r
+
+
+def tara_r(prd_codigo=''):
+    """Gets tara de gaveta from product table"""
+    cnx = mysql.connector.connect(user=CONF_APUNTO.user, password=CONF_APUNTO.password,
+                                  host=CONF_APUNTO.host, database=CONF_APUNTO.database)
+    cursor = cnx.cursor()
+    q1 = 'SELECT prd_taragaveta FROM producto WHERE prd_codigo = 100001'
+    # print (q1)
+    cursor.execute(q1)
+    for (r,) in cursor:
+        # print('cursor: ', cursor, '\n', r)
+        pass
+    cursor.close()
+    cnx.close()
     return r

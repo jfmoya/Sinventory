@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `apunto_ceb` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `apunto_ceb`;
 -- MySQL dump 10.13  Distrib 8.0.18, for Win64 (x86_64)
 --
 -- Host: localhost    Database: apunto_ceb
@@ -40,16 +38,6 @@ CREATE TABLE `centro_acopio` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `centro_acopio`
---
-
-LOCK TABLES `centro_acopio` WRITE;
-/*!40000 ALTER TABLE `centro_acopio` DISABLE KEYS */;
-INSERT INTO `centro_acopio` VALUES (1000,'COMUNA LOTE 3',1792826548001,_binary '\0\0\0\0\0\0\0z6´>ãS¿\Ã∞èN]πø','lote3@elordeno.ec','0996665552','Lote 3','2020-03-02 13:37:31',1);
-/*!40000 ALTER TABLE `centro_acopio` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `operador`
 --
 
@@ -69,16 +57,6 @@ CREATE TABLE `operador` (
   CONSTRAINT `cac_codigo_1` FOREIGN KEY (`cac_codigo`) REFERENCES `centro_acopio` (`cac_codigo`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `operador`
---
-
-LOCK TABLES `operador` WRITE;
-/*!40000 ALTER TABLE `operador` DISABLE KEYS */;
-INSERT INTO `operador` VALUES (711,'Moya Dobronski JuanFernando',1710217520,1000,0,1);
-/*!40000 ALTER TABLE `operador` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `producto`
@@ -104,16 +82,6 @@ CREATE TABLE `producto` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `producto`
---
-
-LOCK TABLES `producto` WRITE;
-/*!40000 ALTER TABLE `producto` DISABLE KEYS */;
-INSERT INTO `producto` VALUES ('100001','Cebolla Blanca Larga',1.5738,1.478,0.072,1,'100100001','2020-01-31 01:55:56',711);
-/*!40000 ALTER TABLE `producto` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `proveedor`
 --
 
@@ -128,6 +96,7 @@ CREATE TABLE `proveedor` (
   `pro_ruc` bigint(13) unsigned zerofill DEFAULT NULL,
   `pro_fecnac` date DEFAULT NULL,
   `pro_genero` char(1) DEFAULT NULL,
+  `pro_direccion` varchar(50) DEFAULT NULL,
   `pro_telf` varchar(45) DEFAULT NULL,
   `pro_correo` varchar(45) DEFAULT NULL,
   `pro_fecreg` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -139,18 +108,8 @@ CREATE TABLE `proveedor` (
   UNIQUE KEY `pro_ruc_UNIQUE` (`pro_ruc`),
   KEY `ope_codigo_idx` (`ope_codigo`),
   CONSTRAINT `ope_codigo_1` FOREIGN KEY (`ope_codigo`) REFERENCES `operador` (`ope_codigo`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `proveedor`
---
-
-LOCK TABLES `proveedor` WRITE;
-/*!40000 ALTER TABLE `proveedor` DISABLE KEYS */;
-INSERT INTO `proveedor` VALUES (1,1000,1711078210,'Andrango Aules Maria Delfina',1711078210001,NULL,NULL,'0997258797\r',NULL,'2020-03-04 18:26:43',NULL,NULL,NULL),(2,1000,1711803286,'Aules Aules Daniel Arturo',1711803286001,NULL,NULL,'0938323301\r',NULL,'2020-03-04 18:29:38',NULL,NULL,NULL),(3,1000,1753336997,'Aules Coyago Wilmer Fabian',1753336997001,NULL,NULL,'0967822356\r',NULL,'2020-03-04 18:29:38',NULL,NULL,NULL),(4,1000,1714597034,'Aules Coyago Jose Carlos',1714597034001,NULL,NULL,'0988111740\r',NULL,'2020-03-04 18:29:38',NULL,NULL,NULL),(5,1000,1719292177,'Aules Farinango Rosa Graciela',1719292177001,NULL,NULL,'0939277103\r',NULL,'2020-03-04 18:29:38',NULL,NULL,NULL),(6,1000,1712952413,'Coyago Tonta Maria Gloria',1712952413001,NULL,NULL,'0988534663\r',NULL,'2020-03-04 18:29:38',NULL,NULL,NULL),(7,1000,1721547741,'Farinango Acero Segundo Asciencio',1721547741001,NULL,NULL,'0997743391\r',NULL,'2020-03-04 18:29:38',NULL,NULL,NULL),(8,1000,1718897281,'Farinango Collago Jose Virgilio',1718897281001,NULL,NULL,'0997454081\r',NULL,'2020-03-04 18:29:38',NULL,NULL,NULL),(9,1000,1716481575,'Farinango Coyago Juan Ram√≥n',1716481575001,NULL,NULL,'0996671384\r',NULL,'2020-03-04 18:29:38',NULL,NULL,NULL),(10,1000,1754520094,'Farinango Coyago Nestor Claudio',1754520094001,NULL,NULL,'0985322572\r',NULL,'2020-03-04 18:29:38',NULL,NULL,NULL),(11,1000,1712952561,'Farinango Farinango Segungo Miguel',1712952561001,NULL,NULL,'\r',NULL,'2020-03-04 18:29:38',NULL,NULL,NULL),(12,1000,1709906414,'Farinango Farinango Concepcion',1709906414001,NULL,NULL,'0939530903\r',NULL,'2020-03-04 18:29:38',NULL,NULL,NULL),(13,1000,1704333481,'Farinango Pilca Jos√© Miguel',1704333481001,NULL,NULL,'0999939532\r',NULL,'2020-03-04 18:29:38',NULL,NULL,NULL),(14,1000,1710104728,'Farinango Tipanluisa Segundo',1710104728001,NULL,NULL,'0979797274\r',NULL,'2020-03-04 18:29:38',NULL,NULL,NULL),(15,1000,1720432119,'Pillajo Farinango Maria Sebastiana',1720432119001,NULL,NULL,'0991459438\r',NULL,'2020-03-04 18:29:38',NULL,NULL,NULL),(16,1000,1713759973,'Pillajo Farinango Rosa Carmen',1713759973001,NULL,NULL,'0988584659\r',NULL,'2020-03-04 18:29:38',NULL,NULL,NULL),(17,1000,1711505097,'Toapanta Aules Jose Pascual',1711505097001,NULL,NULL,'0980933701\r',NULL,'2020-03-04 18:29:38',NULL,NULL,NULL),(18,1000,1707474324,'Tugulinago Aules Aurora',1707474324001,NULL,NULL,'0999939532\r',NULL,'2020-03-04 18:29:38',NULL,NULL,NULL),(19,1000,1721163630,'Tugulinago Aules Manuel Carlos',1721163630001,NULL,NULL,'0985771156\r',NULL,'2020-03-04 18:29:38',NULL,NULL,NULL),(20,1000,1717857377,'Tugulinago Pilca Mar√≠a Narciza',1717857377001,NULL,NULL,'0994218613\r',NULL,'2020-03-04 18:29:38',NULL,NULL,NULL),(21,1000,1715110464,'Ulcuango Tipanluisa Segundo Esteban',1715110464001,NULL,NULL,'0968281710\r',NULL,'2020-03-04 18:29:38',NULL,NULL,NULL),(22,1000,1723442388,'Ulcuango Tipanluisa Rosa Ver√≥nica',1723442388001,NULL,NULL,'0968417258\r',NULL,'2020-03-04 18:29:38',NULL,NULL,NULL),(23,1000,1721183562,'Ulcuango Tipanluisa Segundo Ramon',1721183562001,NULL,NULL,'\r',NULL,'2020-03-04 18:29:38',NULL,NULL,NULL);
-/*!40000 ALTER TABLE `proveedor` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `transaccion`
@@ -189,18 +148,8 @@ CREATE TABLE `transaccion` (
   CONSTRAINT `ope_codigo_3` FOREIGN KEY (`ope_codigo`) REFERENCES `operador` (`ope_codigo`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `prd_codigo_1` FOREIGN KEY (`prd_codigo`) REFERENCES `producto` (`prd_codigo`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `pro_codigo_cacreg_1` FOREIGN KEY (`pro_codigo`, `pro_cacreg`) REFERENCES `proveedor` (`pro_codigo`, `pro_cacreg`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2001 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `transaccion`
---
-
-LOCK TABLES `transaccion` WRITE;
-/*!40000 ALTER TABLE `transaccion` DISABLE KEYS */;
-INSERT INTO `transaccion` VALUES (1,8,1000,1000,'100001','2020-03-02 14:22:00',46.30,3.01,3,4.43,38.85,61.1500,1,NULL,0,1,1,1,1,711),(2,1,1000,1000,'100001','2020-03-02 14:22:35',38.00,1.99,7,10.35,25.66,40.3900,1,NULL,0,1,1,1,1,711);
-/*!40000 ALTER TABLE `transaccion` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Dumping routines for database 'apunto_ceb'
@@ -251,4 +200,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-03-06 12:30:25
+-- Dump completed on 2020-03-12 18:19:00

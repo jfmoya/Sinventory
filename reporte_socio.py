@@ -1,7 +1,7 @@
 import tkinter
 import scale_sql_p3
 import csv
-import CONF_APUNTO
+
 
 class RSoc:
     def grabar(self):
@@ -46,7 +46,7 @@ class RSoc:
         color = ('#99c6f0','#9fd6f0','#c6e3f9','#ecf8f9','#ecf1f2','#f25235','#eee860','#64f28a','#3749ac')
         win = tkinter.Frame(master)
         
-        lbl_1 = tkinter.Label(win, text=CONF_APUNTO.cliente,
+        lbl_1 = tkinter.Label(win, text='texto',
                                 bg = color[0], font = 'arial 14', fg = color[8])
         lbl_1.grid(columnspan = 3, pady=10)
 
@@ -81,3 +81,8 @@ class RSoc:
         self.mensaje.grid(row = 6, columnspan = 3, padx=10)
 
         win.pack()
+
+
+root = tkinter.Tk()
+app = RSoc(root)
+root.mainloop()

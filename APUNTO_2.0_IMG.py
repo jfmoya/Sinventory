@@ -1,7 +1,7 @@
 import CONF_APUNTO
 import tkinter as tk
 from tkinter import messagebox
-import reporte_global, reporte_ampm, reporte_socio
+import report_transacciones, reporte_ampm, reporte_socio
 import correccion_codigo, correccion_cantidad, correccion_ingreso
 import carga_socios, respaldo_transacciones
 
@@ -56,7 +56,7 @@ class RGlob_F:
     def __init__(self, master):
         self.frame = tk.Frame(master)
         self.frame.grid(row=0, column=0, sticky="nsew")
-        sframe = reporte_global.RGlob(self.frame)
+        sframe = report_transacciones.RGlob(self.frame)
     def tkraise(self):
         self.frame.tkraise()
         
