@@ -10,7 +10,7 @@ cac_nombre = scale_sql_p3.cac_nombre_r()  # DEFAULT
 cac_codigo = scale_sql_p3.cac_codigo_r()  # DEFAULT
 
 
-class RTra:
+class RTotPro:
     def exportar(self):
         # print(len(self.lista))
         if len(self.lista) > 1:
@@ -18,7 +18,7 @@ class RTra:
                 deskpath = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')
                 inicio = datetime.datetime.strptime(self.inicio, '%Y-%m-%d').strftime('%Y%m%d')
                 final = datetime.datetime.strptime(self.final, '%Y-%m-%d').strftime('%Y%m%d')
-                path = f'{deskpath}\\TRA{inicio}-{final}.csv'
+                path = f'{deskpath}\\TOT{inicio}-{final}.csv'
                 with open(path, 'w', newline='') as r_file:
                     writer = csv.writer(r_file, delimiter=';')
                     for line in self.lista:
@@ -39,8 +39,8 @@ class RTra:
             if self.inicio > self.final:
                 raise ValueError
             else:
-                columns = (0, 20, 5, 6, 7, 8, 9, 10, 11)
-                r0, r1 = scale_sql_p3.reporte_transacciones(self.inicio, self.final)
+                columns = (0, 1, 2, 3, 4)
+                r0, r1 = scale_sql_p3.reporte_total_proveedores(self.inicio, self.final)
                 # print(len(r1))
                 if len(r1) != 0:
                     encabezado = [r0[i] for i in columns]
@@ -62,11 +62,11 @@ class RTra:
 
     def __init__(self, master):
         win = tkinter.Frame(master)
-        
-        lbl_1 = tkinter.Label(win, text=cac_nombre, bg=color[0], font='arial 14', fg=color[8])
-        lbl_1.grid(columnspan=2, pady=10, sticky='ew')
 
-        lbl_2 = tkinter.Label(win, text="REPORTE DE TRANSACCIONES", bg=color[0], font='arial 16')
+        lbl_1 = tkinter.Label(win, text=cac_nombre, bg=color[0], font='arial 14', fg=color[8])
+        lbl_1.grid(columnspan=2, pady=10, sticky="EW")
+
+        lbl_2 = tkinter.Label(win, text="REPORTE TOTAL POR PROVEEDORES", bg=color[0], font='arial 16')
         lbl_2.grid(columnspan=2, pady=10)
 
         lbl_3 = tkinter.Label(win, text="Desde AAAA-MM-DD", bg=color[2], font='arial 10')
@@ -102,5 +102,5 @@ class RTra:
 
 
 # root = tkinter.Tk()
-# app = RTra(root)
+# app = RTotPro(root)
 # root.mainloop()

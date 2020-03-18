@@ -8,7 +8,7 @@ cac_nombre = scale_sql_p3.cac_nombre_r()  # DEFAULT
 cac_codigo = scale_sql_p3.cac_codigo_r()  # DEFAULT
 
 
-class InsProv:
+class IPro:
     def grabar(self):
         """Funcion command del boton grabar, COMPARA MENSAJE DE scale_sql_p3.update PARA EJECUTAR IF STATEMENT"""
         ruc = self.txt_in1.get()
@@ -94,13 +94,13 @@ class InsProv:
         btn_grabar.grid(row=8, column=1, pady=15)
         btn_grabar.configure(bg=color[7])
 
-        self.mensaje = tkinter.Listbox(win, height=6, width=70, font='arial 12')
+        self.mensaje = tkinter.Listbox(win, height=6, width=80, font='arial 11')
         self.mensaje.insert("end", 'Ingrese la informacion a registrar')
         self.mensaje.grid(row=9, columnspan=2, padx=10, pady=10)
 
         win.pack()
 
 
-root = tkinter.Tk()
-app = InsProv(root)
-root.mainloop()
+# root = tkinter.Tk()
+# app = IPro(root)
+# root.mainloop()

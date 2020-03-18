@@ -8,7 +8,7 @@ cac_nombre = scale_sql_p3.cac_nombre_r()  # DEFAULT
 cac_codigo = scale_sql_p3.cac_codigo_r()  # DEFAULT
 
 
-class EditProv:
+class EPro:
     def actualizar(self):
         """Funcion command del boton grabar, COMPARA MENSAJE DE scale_sql_p3.update PARA EJECUTAR IF STATEMENT"""
 
@@ -120,13 +120,13 @@ class EditProv:
         btn_actualizar.grid(row=8, column=2, pady=15)
         btn_actualizar.configure(bg=color[7])
 
-        self.mensaje = tkinter.Listbox(win, height=6, width=70, font='arial 12')
+        self.mensaje = tkinter.Listbox(win, height=6, width=80, font='arial 11')
         self.mensaje.insert("end", 'Consulta con CODIGO o RUC')
         self.mensaje.grid(row=9, columnspan=3, padx=10, pady=10)
 
         win.pack()
 
 
-root = tkinter.Tk()
-app = EditProv(root)
-root.mainloop()
+# root = tkinter.Tk()
+# app = EPro(root)
+# root.mainloop()

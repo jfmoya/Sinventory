@@ -67,18 +67,27 @@ def proveedor_r(codigo):
         return ''
 
 
-def proveedores_r(cac_codigo):
+def proveedores_r(codigo):
     """Argumento cac_codigo en str, retorna lista de proveedores en tabla """
     cnx = mysql.connector.connect(user=CONF_APUNTO.user, password=CONF_APUNTO.password,
                                   host=CONF_APUNTO.host, database=CONF_APUNTO.database)
     cursor = cnx.cursor()
-    Q = f'SELECT pro_codigo + pro_cacreg, CAST(pro_ruc AS CHAR), pro_nombre, pro_fecnac, pro_direccion, pro_telf, ' \
-        f'pro_correo FROM proveedor WHERE pro_cacreg = {cac_codigo}'
-    # print (Q)
+    Q = f'SELECT pro_codigo + pro_cacreg AS CODIGIO, \n' \
+        f'\tCAST(pro_ruc AS CHAR) AS RUC, \n' \
+        f'\tpro_nombre AS NOMBRE, \n' \
+        f'\tpro_fecnac "FEC. NACIMIENTO", \n' \
+        f'\tpro_direccion AS DIRECCION, \n' \
+        f'\tpro_telf AS TELF, \n' \
+        f'\tpro_correo AS CORREO \n' \
+        f'FROM proveedor \n' \
+        f'WHERE pro_cacreg = {codigo}'
+    # print(Q)
     cursor.execute(Q)
     r = cursor.fetchall()
+    r0 = [f'{d[0]}' for d in cursor.description]
     cursor.close()
     cnx.close()
+    r.insert(0, r0)
     # for line in r:
     #     print(line)
     return r
@@ -476,20 +485,77 @@ def reporte2(inicio, final):
         return 'Rango de fechas incorrecto o excede 16 días',''
 
 
-def reporte_t(inicio, final):
-    """Reporte transacciones, * query con fecha inicio y dinal, retorna lista de tuples con transacciones"""
+def reporte_transacciones(inicio, final):
+    """Reporte transacciones, * query con fecha inicio y dinal,
+    retorna 2 listas: columnas y de tuples con transacciones"""
     cnx = mysql.connector.connect(user=CONF_APUNTO.user, password=CONF_APUNTO.password,
                                   host=CONF_APUNTO.host, database=CONF_APUNTO.database)
     cursor = cnx.cursor()
-    Q = f'SELECT column_name FROM information_schema.columns ' \
-        f'WHERE table_schema = "apunto_ceb" AND table_name = "transaccion"'
-    cursor.execute(Q)
-    r0 = cursor.fetchall()
-    Q = f'SELECT * FROM transaccion ' \
+    Q = f'SELECT *, pro_codigo + pro_cacreg AS CODIGO \n' \
+        f'FROM transaccion \n' \
         f'WHERE DATE(tra_fecreg) >= "{inicio}" AND DATE(tra_fecreg) <= "{final}"'
     # print(Q)
     cursor.execute(Q)
     r1 = cursor.fetchall()
+    r0 = [f'{d[0]}' for d in cursor.description]
+    cursor.close()
+    cnx.close()
+    # print(r0)
+    # for line in r1:
+    #     print(line)
+    return r0, r1
+
+
+def reporte_transacciones_proveedor(codigo, inicio, final):
+    """Reporte transacciones, * query con fecha inicio y dinal,
+    retorna 2 listas: columnas y de tuples con transacciones"""
+    cnx = mysql.connector.connect(user=CONF_APUNTO.user, password=CONF_APUNTO.password,
+                                  host=CONF_APUNTO.host, database=CONF_APUNTO.database)
+    cursor = cnx.cursor()
+    Q = f'SELECT *, pro_codigo + pro_cacreg AS CODIGO\n' \
+        f'FROM transaccion \n' \
+        f'WHERE DATE(tra_fecreg) >= "{inicio}" \n' \
+        f'AND DATE(tra_fecreg) <= "{final}" \n' \
+        f'AND pro_codigo + pro_cacreg = {codigo}'
+    # print(Q)
+    cursor.execute(Q)
+    r1 = cursor.fetchall()
+    r0 = [f'{d[0]}' for d in cursor.description]
+    cursor.close()
+    cnx.close()
+    # print(r0)
+    # for line in r1:
+    #     print(line)
+    return r0, r1
+
+
+def reporte_total_proveedores(inicio, final):
+    """Reporte transacciones, total group by proveedor, * query con fecha inicio y final,
+    retorna 2 listas: columnas y de tuples con transacciones"""
+    cnx = mysql.connector.connect(user=CONF_APUNTO.user, password=CONF_APUNTO.password,
+                                  host=CONF_APUNTO.host, database=CONF_APUNTO.database)
+    cursor = cnx.cursor()
+    Q = f'SELECT NOMBRE.CODIGO, NOMBRE.RUC, NOMBRE.NOMBRE, TOTAL.PESO, TOTAL.VALOR \n' \
+        f'FROM (SELECT pro_codigo + pro_cacreg AS CODIGO, \n' \
+        f'\tCAST(pro_ruc AS CHAR) AS RUC, \n' \
+        f'\tpro_nombre AS NOMBRE \n' \
+        f'FROM proveedor) \n' \
+        f'AS NOMBRE \n' \
+        f'INNER JOIN (SELECT pro_codigo + pro_cacreg AS CODIGO, \n' \
+        f'\tSUM(tra_pesoneto) AS PESO, \n' \
+        f'\tSUM(tra_valor) AS VALOR \n' \
+        f'FROM transaccion \n' \
+        f'WHERE DATE(tra_fecreg) >= "{inicio}" AND DATE(tra_fecreg) <= "{final}" \n' \
+        f'GROUP BY CODIGO) \n' \
+        f'AS TOTAL \n' \
+        f'ON NOMBRE.CODIGO = TOTAL.CODIGO'
+    # print(Q)
+    cursor.execute(Q)
+    r1 = cursor.fetchall()
+    r0 = [f'{d[0]}' for d in cursor.description]
+    # print(r0)
+    # for line in r1:
+    #     print(line)
     cursor.close()
     cnx.close()
     return r0, r1

@@ -10,7 +10,7 @@ cac_nombre = scale_sql_p3.cac_nombre_r()  # DEFAULT
 cac_codigo = scale_sql_p3.cac_codigo_r()  # DEFAULT
 
 
-class RepProv:
+class RPro:
     def exportar(self):
         if messagebox.askyesno('Apunto', 'Exportar Lista?', default='no'):
             if len(self.lista) != 0:
@@ -49,7 +49,7 @@ class RepProv:
         btn_exportar.grid(row=7, column=1, pady=5)
         btn_exportar.configure(bg=color[7])
 
-        self.mensaje = tkinter.Listbox(win, height=25, width=70, font='arial 11')
+        self.mensaje = tkinter.Listbox(win, height=25, width=80, font='arial 11')
         self.mensaje.insert("end", 'Generar lista para exportar')
         self.mensaje.grid(row=8, columnspan=2, padx=10, pady=10)
 
@@ -58,6 +58,6 @@ class RepProv:
         win.pack()
 
 
-root = tkinter.Tk()
-app = RepProv(root)
-root.mainloop()
+# root = tkinter.Tk()
+# app = RPro(root)
+# root.mainloop()

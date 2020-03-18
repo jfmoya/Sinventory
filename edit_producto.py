@@ -10,7 +10,7 @@ cac_codigo = scale_sql_p3.cac_codigo_r()  # DEFAULT
 prd_codigo = CONF_APUNTO.prd_codigo  # SETTING
 
 
-class EditProd:
+class EPrd:
     def actualizar(self):
         """Funcion command del boton actualizar"""
         codigo = prd_codigo
@@ -101,13 +101,13 @@ class EditProd:
         btn_actualizar.grid(row=8, column=2, pady=15)
         btn_actualizar.configure(bg=color[7])
 
-        self.mensaje = tkinter.Listbox(win, height=6, width=70, font='arial 12')
+        self.mensaje = tkinter.Listbox(win, height=6, width=80, font='arial 11')
         self.mensaje.insert("end", 'PRECIONE CONSULTAR')
         self.mensaje.grid(row=9, columnspan=3, padx=10, pady=10)
 
         win.pack()
 
 
-root = tkinter.Tk()
-app = EditProd(root)
-root.mainloop()
+# root = tkinter.Tk()
+# app = EPrd(root)
+# root.mainloop()
