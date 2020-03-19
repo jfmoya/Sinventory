@@ -1,4 +1,4 @@
-import tkinter
+import tkinter as tk
 from tkinter import messagebox
 import scale_sql_p3
 import datetime
@@ -65,68 +65,68 @@ class EPro:
         self.txt_in7.delete(0, 'end')
 
     def __init__(self, master):
-        win = tkinter.Frame(master)
+        win = tk.Frame(master)
 
-        lbl = tkinter.Label(win, text=cac_nombre, bg=color[0], font='arial 14', fg=color[8])
+        lbl = tk.Label(win, text=cac_nombre, bg=color[0], font='arial 14', fg=color[8])
         lbl.grid(columnspan=3, pady=10, sticky="EW")
 
-        lbl_1 = tkinter.Label(win, text="RUC : ", bg=color[2], font='arial 10')
+        lbl_1 = tk.Label(win, text="RUC : ", bg=color[2], font='arial 10')
         lbl_1.grid(row=2, column=0, pady=5, padx=10, sticky="EW")
-        self.txt_in1 = tkinter.Label(win, width=13, font='arial 12')
+        self.txt_in1 = tk.Label(win, width=13, font='arial 12')
         self.txt_in1.grid(row=2, column=1, columnspan=2, pady=5, sticky="W")
 
-        lbl_2 = tkinter.Label(win, text="APELLIDOS Y NOMBRES : ", bg=color[2], font='arial 10')
+        lbl_2 = tk.Label(win, text="APELLIDOS Y NOMBRES : ", bg=color[2], font='arial 10')
         lbl_2.grid(row=3, column=0, pady=5, padx=10, sticky="EW")
-        self.txt_in2 = tkinter.Entry(win, width=40, font='arial 12')
+        self.txt_in2 = tk.Entry(win, width=40, font='arial 12')
         self.txt_in2.grid(row=3, column=1, columnspan=2, pady=5, sticky="W")
 
-        lbl_3 = tkinter.Label(win, text="FECHA NAC. aaaa-mm-dd : ", bg=color[2], font='arial 10')
+        lbl_3 = tk.Label(win, text="FECHA NAC. aaaa-mm-dd : ", bg=color[2], font='arial 10')
         lbl_3.grid(row=4, column=0, pady=5, padx=10, sticky="EW")
-        self.txt_in3 = tkinter.Entry(win, width=10, font='arial 12')
+        self.txt_in3 = tk.Entry(win, width=10, font='arial 12')
         self.txt_in3.grid(row=4, column=1, columnspan=2, pady=5, sticky="W")
 
-        lbl_4 = tkinter.Label(win, text="DIRECCION : ", bg=color[2], font='arial 10')
+        lbl_4 = tk.Label(win, text="DIRECCION : ", bg=color[2], font='arial 10')
         lbl_4.grid(row=5, column=0, pady=5, padx=10, sticky="EW")
-        self.txt_in4 = tkinter.Entry(win, width=40, font='arial 12')
+        self.txt_in4 = tk.Entry(win, width=40, font='arial 12')
         self.txt_in4.grid(row=5, column=1, columnspan=2, pady=5, sticky="W")
 
-        lbl_5 = tkinter.Label(win, text="# TELEFONO : ", bg=color[2], font='arial 10')
+        lbl_5 = tk.Label(win, text="# TELEFONO : ", bg=color[2], font='arial 10')
         lbl_5.grid(row=6, column=0, pady=5, padx=10, sticky="EW")
-        self.txt_in5 = tkinter.Entry(win, width=40, font='arial 12')
+        self.txt_in5 = tk.Entry(win, width=40, font='arial 12')
         self.txt_in5.grid(row=6, column=1, columnspan=2, pady=5, sticky="W")
 
-        lbl_6 = tkinter.Label(win, text="CORREO : ", bg=color[2], font='arial 10')
+        lbl_6 = tk.Label(win, text="CORREO : ", bg=color[2], font='arial 10')
         lbl_6.grid(row=7, column=0, pady=5, padx=10, sticky="EW")
-        self.txt_in6 = tkinter.Entry(win, width=40, font='arial 12')
+        self.txt_in6 = tk.Entry(win, width=40, font='arial 12')
         self.txt_in6.grid(row=7, column=1, columnspan=2, pady=5, sticky="W")
 
-        lbl_7 = tkinter.Label(win, text="CODIGO : ", bg=color[7], font='arial 15')
+        lbl_7 = tk.Label(win, text="CODIGO : ", bg=color[7], font='arial 15')
         lbl_7.grid(row=1, column=0, pady=5, padx=10, sticky="EW")
-        self.txt_in7 = tkinter.Entry(win, width=6, font='arial 15')
+        self.txt_in7 = tk.Entry(win, width=6, font='arial 15')
         self.txt_in7.grid(row=1, column=1, columnspan=2, pady=5, sticky="w")
         self.txt_in7.focus_set()
 
-        btn_borrar = tkinter.Button(win, text="LIMPIAR", command=self.borrar, width=12, font='arial 11', height=1)
+        btn_borrar = tk.Button(win, text="LIMPIAR", command=self.borrar, width=12, font='arial 11', height=1)
         btn_borrar.grid(row=8, column=0, pady=15)
         btn_borrar.configure(bg=color[5])
 
-        btn_consultar = tkinter.Button(win, text="CONSULTAR", command=self.consultar, width=12, font='arial 11',
+        btn_consultar = tk.Button(win, text="CONSULTAR", command=self.consultar, width=12, font='arial 11',
                                        height=1)
         btn_consultar.grid(row=8, column=1, pady=15)
         btn_consultar.configure(bg=color[0])
 
-        btn_actualizar = tkinter.Button(win, text="ACTUALIZAR", command=self.actualizar, width=12, font='arial 11',
+        btn_actualizar = tk.Button(win, text="ACTUALIZAR", command=self.actualizar, width=12, font='arial 11',
                                         height=1)
         btn_actualizar.grid(row=8, column=2, pady=15)
         btn_actualizar.configure(bg=color[7])
 
-        self.mensaje = tkinter.Listbox(win, height=6, width=80, font='arial 11')
+        self.mensaje = tk.Listbox(win, height=6, width=80, font='arial 11')
         self.mensaje.insert("end", 'Consulta con CODIGO o RUC')
         self.mensaje.grid(row=9, columnspan=3, padx=10, pady=10)
 
         win.pack()
 
 
-# root = tkinter.Tk()
+# root = tk.Tk()
 # app = EPro(root)
 # root.mainloop()

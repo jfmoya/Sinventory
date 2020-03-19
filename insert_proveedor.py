@@ -1,4 +1,4 @@
-import tkinter
+import tkinter as tk
 from tkinter import messagebox
 import scale_sql_p3
 import datetime
@@ -45,62 +45,62 @@ class IPro:
         self.lbl_7.config(text='')
 
     def __init__(self, master):
-        win = tkinter.Frame(master)
+        win = tk.Frame(master)
 
-        lbl = tkinter.Label(win, text=cac_nombre, bg=color[0], font='arial 14', fg=color[8])
+        lbl = tk.Label(win, text=cac_nombre, bg=color[0], font='arial 14', fg=color[8])
         lbl.grid(columnspan=2, pady=10, sticky="EW")
 
-        lbl_1 = tkinter.Label(win, text="RUC : ", bg=color[2], font='arial 10')
+        lbl_1 = tk.Label(win, text="RUC : ", bg=color[2], font='arial 10')
         lbl_1.grid(row=1, column=0, pady=5, padx=10, sticky="EW")
-        self.txt_in1 = tkinter.Entry(win, width=13, font='arial 12')
+        self.txt_in1 = tk.Entry(win, width=13, font='arial 12')
         self.txt_in1.grid(row=1, column=1, pady=5, sticky="W")
         self.txt_in1.focus_set()
 
-        lbl_2 = tkinter.Label(win, text="APELLIDOS Y NOMBRES : ", bg=color[2], font='arial 10')
+        lbl_2 = tk.Label(win, text="APELLIDOS Y NOMBRES : ", bg=color[2], font='arial 10')
         lbl_2.grid(row=2, column=0, pady=5, padx=10, sticky="EW")
-        self.txt_in2 = tkinter.Entry(win, width=40, font='arial 12')
+        self.txt_in2 = tk.Entry(win, width=40, font='arial 12')
         self.txt_in2.grid(row=2, column=1, pady=5, sticky="W")
 
-        lbl_3 = tkinter.Label(win, text="FECHA NAC. aaaa-mm-dd : ", bg=color[2], font='arial 10')
+        lbl_3 = tk.Label(win, text="FECHA NAC. aaaa-mm-dd : ", bg=color[2], font='arial 10')
         lbl_3.grid(row=3, column=0, pady=5, padx=10, sticky="EW")
-        self.txt_in3 = tkinter.Entry(win, width=10, font='arial 12')
+        self.txt_in3 = tk.Entry(win, width=10, font='arial 12')
         self.txt_in3.grid(row=3, column=1, pady=5, sticky="W")
 
-        lbl_4 = tkinter.Label(win, text="DIRECCION : ", bg=color[2], font='arial 10')
+        lbl_4 = tk.Label(win, text="DIRECCION : ", bg=color[2], font='arial 10')
         lbl_4.grid(row=4, column=0, pady=5, padx=10, sticky="EW")
-        self.txt_in4 = tkinter.Entry(win, width=40, font='arial 12')
+        self.txt_in4 = tk.Entry(win, width=40, font='arial 12')
         self.txt_in4.grid(row=4, column=1, pady=5, sticky="W")
 
-        lbl_5 = tkinter.Label(win, text="# TELEFONO : ", bg=color[2], font='arial 10')
+        lbl_5 = tk.Label(win, text="# TELEFONO : ", bg=color[2], font='arial 10')
         lbl_5.grid(row=5, column=0, pady=5, padx=10, sticky="EW")
-        self.txt_in5 = tkinter.Entry(win, width=40, font='arial 12')
+        self.txt_in5 = tk.Entry(win, width=40, font='arial 12')
         self.txt_in5.grid(row=5, column=1, pady=5, sticky="W")
 
-        lbl_6 = tkinter.Label(win, text="CORREO : ", bg=color[2], font='arial 10')
+        lbl_6 = tk.Label(win, text="CORREO : ", bg=color[2], font='arial 10')
         lbl_6.grid(row=6, column=0, pady=5, padx=10, sticky="EW")
-        self.txt_in6 = tkinter.Entry(win, width=40, font='arial 12')
+        self.txt_in6 = tk.Entry(win, width=40, font='arial 12')
         self.txt_in6.grid(row=6, column=1, pady=5, sticky="W")
 
-        lbl_7 = tkinter.Label(win, text="CODIGO ASIGNADO: ", bg=color[7], font='arial 15')
+        lbl_7 = tk.Label(win, text="CODIGO ASIGNADO: ", bg=color[7], font='arial 15')
         lbl_7.grid(row=7, column=0, pady=5, padx=10, sticky="EW")
-        self.lbl_7 = tkinter.Label(win, width=6, bg=color[7], font='arial 15')
+        self.lbl_7 = tk.Label(win, width=6, bg=color[7], font='arial 15')
         self.lbl_7.grid(row=7, column=1, pady=5, sticky="w")
 
-        btn_borrar = tkinter.Button(win, text="BORRAR", command=self.borrar, width=10, font='arial 12', height=1)
+        btn_borrar = tk.Button(win, text="BORRAR", command=self.borrar, width=10, font='arial 12', height=1)
         btn_borrar.grid(row=8, column=0, pady=15)
         btn_borrar.configure(bg=color[5])
 
-        btn_grabar = tkinter.Button(win, text="GRABAR", command=self.grabar, width=10, font='arial 12', height=1)
+        btn_grabar = tk.Button(win, text="GRABAR", command=self.grabar, width=10, font='arial 12', height=1)
         btn_grabar.grid(row=8, column=1, pady=15)
         btn_grabar.configure(bg=color[7])
 
-        self.mensaje = tkinter.Listbox(win, height=6, width=80, font='arial 11')
+        self.mensaje = tk.Listbox(win, height=6, width=80, font='arial 11')
         self.mensaje.insert("end", 'Ingrese la informacion a registrar')
         self.mensaje.grid(row=9, columnspan=2, padx=10, pady=10)
 
         win.pack()
 
 
-# root = tkinter.Tk()
+# root = tk.Tk()
 # app = IPro(root)
 # root.mainloop()

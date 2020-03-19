@@ -1,4 +1,4 @@
-import tkinter
+import tkinter as tk
 from tkinter import messagebox
 import datetime
 import csv
@@ -36,20 +36,20 @@ class RPro:
             self.mensaje.insert('end', f'{line[0]};{line[1]};{line[2]};{line[3]};{line[4]};{line[5]};{line[6]}')
 
     def __init__(self, master):
-        win = tkinter.Frame(master)
+        win = tk.Frame(master)
 
-        lbl = tkinter.Label(win, text=cac_nombre, bg=color[0], font='arial 14', fg=color[8])
+        lbl = tk.Label(win, text=cac_nombre, bg=color[0], font='arial 14', fg=color[8])
         lbl.grid(columnspan=2, pady=10, sticky="EW")
 
-        btn_consultar = tkinter.Button(win, text="GENERAR", command=self.consultar, width=12, font='arial 11', height=1)
+        btn_consultar = tk.Button(win, text="GENERAR", command=self.consultar, width=12, font='arial 11', height=1)
         btn_consultar.grid(row=7, column=0, pady=5)
         btn_consultar.configure(bg=color[0])
 
-        btn_exportar = tkinter.Button(win, text="EXPORTAR", command=self.exportar, width=12, font='arial 11', height=1)
+        btn_exportar = tk.Button(win, text="EXPORTAR", command=self.exportar, width=12, font='arial 11', height=1)
         btn_exportar.grid(row=7, column=1, pady=5)
         btn_exportar.configure(bg=color[7])
 
-        self.mensaje = tkinter.Listbox(win, height=25, width=80, font='arial 11')
+        self.mensaje = tk.Listbox(win, height=25, width=80, font='arial 11')
         self.mensaje.insert("end", 'Generar lista para exportar')
         self.mensaje.grid(row=8, columnspan=2, padx=10, pady=10)
 
@@ -58,6 +58,6 @@ class RPro:
         win.pack()
 
 
-# root = tkinter.Tk()
+# root = tk.Tk()
 # app = RPro(root)
 # root.mainloop()

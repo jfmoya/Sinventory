@@ -1,4 +1,4 @@
-import tkinter
+import tkinter as tk
 from tkinter import messagebox
 import scale_sql_p3
 import CONF_APUNTO
@@ -57,57 +57,57 @@ class EPrd:
         self.txt_in5.delete(0, 'end')
 
     def __init__(self, master):
-        win = tkinter.Frame(master)
+        win = tk.Frame(master)
 
-        lbl = tkinter.Label(win, text=cac_nombre, bg=color[0], font='arial 14', fg=color[8])
+        lbl = tk.Label(win, text=cac_nombre, bg=color[0], font='arial 14', fg=color[8])
         lbl.grid(columnspan=3, pady=10, sticky="EW")
 
-        lbl_1 = tkinter.Label(win, text="C. PRODUCTO : ", bg=color[2], font='arial 10')
+        lbl_1 = tk.Label(win, text="C. PRODUCTO : ", bg=color[2], font='arial 10')
         lbl_1.grid(row=2, column=0, pady=5, padx=10, sticky="EW")
-        self.txt_in1 = tkinter.Label(win, width=13, font='arial 12')
+        self.txt_in1 = tk.Label(win, width=13, font='arial 12')
         self.txt_in1.grid(row=2, column=1, columnspan=2, pady=5, sticky="W")
 
-        lbl_2 = tkinter.Label(win, text="PRODUCTO : ", bg=color[2], font='arial 10')
+        lbl_2 = tk.Label(win, text="PRODUCTO : ", bg=color[2], font='arial 10')
         lbl_2.grid(row=3, column=0, pady=5, padx=10, sticky="EW")
-        self.txt_in2 = tkinter.Entry(win, width=40, font='arial 12')
+        self.txt_in2 = tk.Entry(win, width=40, font='arial 12')
         self.txt_in2.grid(row=3, column=1, columnspan=2, pady=5, sticky="W")
 
-        lbl_3 = tkinter.Label(win, text="PRECIO $/KG : ", bg=color[2], font='arial 10')
+        lbl_3 = tk.Label(win, text="PRECIO $/KG : ", bg=color[2], font='arial 10')
         lbl_3.grid(row=4, column=0, pady=5, padx=10, sticky="EW")
-        self.txt_in3 = tkinter.Entry(win, width=10, font='arial 12')
+        self.txt_in3 = tk.Entry(win, width=10, font='arial 12')
         self.txt_in3.grid(row=4, column=1, columnspan=2, pady=5, sticky="W")
 
-        lbl_4 = tkinter.Label(win, text="TARA GAVETA KG : ", bg=color[2], font='arial 10')
+        lbl_4 = tk.Label(win, text="TARA GAVETA KG : ", bg=color[2], font='arial 10')
         lbl_4.grid(row=5, column=0, pady=5, padx=10, sticky="EW")
-        self.txt_in4 = tkinter.Entry(win, width=40, font='arial 12')
+        self.txt_in4 = tk.Entry(win, width=40, font='arial 12')
         self.txt_in4.grid(row=5, column=1, columnspan=2, pady=5, sticky="W")
 
-        lbl_5 = tkinter.Label(win, text="% MERMA : ", bg=color[2], font='arial 10')
+        lbl_5 = tk.Label(win, text="% MERMA : ", bg=color[2], font='arial 10')
         lbl_5.grid(row=6, column=0, pady=5, padx=10, sticky="EW")
-        self.txt_in5 = tkinter.Entry(win, width=40, font='arial 12')
+        self.txt_in5 = tk.Entry(win, width=40, font='arial 12')
         self.txt_in5.grid(row=6, column=1, columnspan=2, pady=5, sticky="W")
 
-        btn_borrar = tkinter.Button(win, text="LIMPIAR", command=self.borrar, width=12, font='arial 11', height=1)
+        btn_borrar = tk.Button(win, text="LIMPIAR", command=self.borrar, width=12, font='arial 11', height=1)
         btn_borrar.grid(row=8, column=0, pady=15)
         btn_borrar.configure(bg=color[5])
 
-        btn_consultar = tkinter.Button(win, text="CONSULTAR", command=self.consultar, width=12, font='arial 11',
+        btn_consultar = tk.Button(win, text="CONSULTAR", command=self.consultar, width=12, font='arial 11',
                                        height=1)
         btn_consultar.grid(row=8, column=1, pady=15)
         btn_consultar.configure(bg=color[0])
 
-        btn_actualizar = tkinter.Button(win, text="ACTUALIZAR", command=self.actualizar, width=12, font='arial 11',
+        btn_actualizar = tk.Button(win, text="ACTUALIZAR", command=self.actualizar, width=12, font='arial 11',
                                         height=1)
         btn_actualizar.grid(row=8, column=2, pady=15)
         btn_actualizar.configure(bg=color[7])
 
-        self.mensaje = tkinter.Listbox(win, height=6, width=80, font='arial 11')
+        self.mensaje = tk.Listbox(win, height=6, width=80, font='arial 11')
         self.mensaje.insert("end", 'PRECIONE CONSULTAR')
         self.mensaje.grid(row=9, columnspan=3, padx=10, pady=10)
 
         win.pack()
 
 
-# root = tkinter.Tk()
+# root = tk.Tk()
 # app = EPrd(root)
 # root.mainloop()

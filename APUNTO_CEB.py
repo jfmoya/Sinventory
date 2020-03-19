@@ -1,16 +1,12 @@
 import CONF_APUNTO
 import tkinter as tk
 
-from tkinter import messagebox
-
 import report_total_proveedores
 import report_transacciones
 import report_transacciones_proveedor
-
 import insert_proveedor
 import edit_proveedor
 import report_proveedores
-
 import edit_producto
 
 
@@ -127,13 +123,15 @@ class EPrdF:
 class InicioF:
     def __init__(self, master):
         self.frame = tk.Frame(master)
+        self.frame.config(background='#14397e')
         self.frame.grid(row=0, column=0, sticky="nsew")
-        label = tk.Label(self.frame, text="Apunto de PCServ - 0987090445 - J. Moya")
-        label.pack()
+        label = tk.Label(self.frame, text="Apunto de PCServ - 0987090445 - J. Moya", width=94)
+        label.pack(fill='x')
         try:
             label_2 = tk.Label(self.frame, image=logo)
-            label_2.pack()
+            label_2.pack(side='right')
         except:
+            print('label 2 error')
             pass
 
     def tkraise(self):
@@ -147,7 +145,7 @@ try:
 except:
     pass
 try:
-    logo = tk.PhotoImage(file=CONF_APUNTO.logo_path)
+    logo = tk.PhotoImage(file=CONF_APUNTO.logo2_path)
 except:
     pass
 
