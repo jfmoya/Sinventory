@@ -4,8 +4,6 @@ import scale_sql_p3
 import datetime
 
 color = ('#99c6f0', '#9fd6f0', '#c6e3f9', '#ecf8f9', '#ecf1f2', '#f25235', '#eee860', '#64f28a', '#3749ac')
-cac_nombre = scale_sql_p3.cac_nombre_r()  # DEFAULT
-cac_codigo = scale_sql_p3.cac_codigo_r()  # DEFAULT
 
 
 class EPro:
@@ -64,7 +62,7 @@ class EPro:
         self.txt_in6.delete(0, 'end')
         self.txt_in7.delete(0, 'end')
 
-    def __init__(self, master):
+    def __init__(self, master, cac_nombre):
         win = tk.Frame(master)
 
         lbl = tk.Label(win, text=cac_nombre, bg=color[0], font='arial 14', fg=color[8])
@@ -110,13 +108,11 @@ class EPro:
         btn_borrar.grid(row=8, column=0, pady=15)
         btn_borrar.configure(bg=color[5])
 
-        btn_consultar = tk.Button(win, text="CONSULTAR", command=self.consultar, width=12, font='arial 11',
-                                       height=1)
+        btn_consultar = tk.Button(win, text="CONSULTAR", command=self.consultar, width=12, font='arial 11', height=1)
         btn_consultar.grid(row=8, column=1, pady=15)
         btn_consultar.configure(bg=color[0])
 
-        btn_actualizar = tk.Button(win, text="ACTUALIZAR", command=self.actualizar, width=12, font='arial 11',
-                                        height=1)
+        btn_actualizar = tk.Button(win, text="ACTUALIZAR", command=self.actualizar, width=12, font='arial 11', height=1)
         btn_actualizar.grid(row=8, column=2, pady=15)
         btn_actualizar.configure(bg=color[7])
 

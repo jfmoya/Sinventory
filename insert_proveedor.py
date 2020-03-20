@@ -4,8 +4,6 @@ import scale_sql_p3
 import datetime
 
 color = ('#99c6f0', '#9fd6f0', '#c6e3f9', '#ecf8f9', '#ecf1f2', '#f25235', '#eee860', '#64f28a', '#3749ac')
-cac_nombre = scale_sql_p3.cac_nombre_r()  # DEFAULT
-cac_codigo = scale_sql_p3.cac_codigo_r()  # DEFAULT
 
 
 class IPro:
@@ -31,7 +29,7 @@ class IPro:
         telf = self.txt_in5.get()
         correo = self.txt_in6.get()
         if ruc != '' and messagebox.askyesno('Apunto', 'Crear proveedor?', default='no'):
-            ms = scale_sql_p3.p_loader(cac_codigo, ruc, nombre, fecnac, direccion, telf, correo)
+            ms = scale_sql_p3.p_loader(self.cac_codigo, ruc, nombre, fecnac, direccion, telf, correo)
             self.mensaje.insert(0, f'{ms[0]} -- {ms[1][0]}: {ms[1][1]}')
             self.lbl_7.config(text=f'{ms[1][0]}')
 
@@ -44,7 +42,7 @@ class IPro:
         self.txt_in6.delete(0, 'end')
         self.lbl_7.config(text='')
 
-    def __init__(self, master):
+    def __init__(self, master, cac_nombre, cac_codigo):
         win = tk.Frame(master)
 
         lbl = tk.Label(win, text=cac_nombre, bg=color[0], font='arial 14', fg=color[8])
@@ -97,6 +95,8 @@ class IPro:
         self.mensaje = tk.Listbox(win, height=6, width=80, font='arial 11')
         self.mensaje.insert("end", 'Ingrese la informacion a registrar')
         self.mensaje.grid(row=9, columnspan=2, padx=10, pady=10)
+
+        self.cac_codigo = cac_codigo
 
         win.pack()
 

@@ -1,19 +1,16 @@
 import tkinter as tk
 from tkinter import messagebox
 import scale_sql_p3
-import CONF_APUNTO
+# import CONF_APUNTO
 import decimal
 
 color = ('#99c6f0', '#9fd6f0', '#c6e3f9', '#ecf8f9', '#ecf1f2', '#f25235', '#eee860', '#64f28a', '#3749ac')
-cac_nombre = scale_sql_p3.cac_nombre_r()  # DEFAULT
-cac_codigo = scale_sql_p3.cac_codigo_r()  # DEFAULT
-prd_codigo = CONF_APUNTO.prd_codigo  # SETTING
 
 
 class EPrd:
     def actualizar(self):
         """Funcion command del boton actualizar"""
-        codigo = prd_codigo
+        codigo = self.prd_codigo
         try:
             nombre = self.txt_in2.get()
             preciogk = decimal.Decimal(self.txt_in3.get())
@@ -29,7 +26,7 @@ class EPrd:
             self.mensaje.insert(0, 'Formato Incorrecto')
 
     def consultar(self):
-        codigo = prd_codigo
+        codigo = self.prd_codigo
         # print(codigo)
         producto = scale_sql_p3.producto_r(codigo)[0]
         # print(producto)
@@ -56,7 +53,7 @@ class EPrd:
         self.txt_in4.delete(0, 'end')
         self.txt_in5.delete(0, 'end')
 
-    def __init__(self, master):
+    def __init__(self, master, cac_nombre, prd_codigo):
         win = tk.Frame(master)
 
         lbl = tk.Label(win, text=cac_nombre, bg=color[0], font='arial 14', fg=color[8])
@@ -91,19 +88,19 @@ class EPrd:
         btn_borrar.grid(row=8, column=0, pady=15)
         btn_borrar.configure(bg=color[5])
 
-        btn_consultar = tk.Button(win, text="CONSULTAR", command=self.consultar, width=12, font='arial 11',
-                                       height=1)
+        btn_consultar = tk.Button(win, text="CONSULTAR", command=self.consultar, width=12, font='arial 11', height=1)
         btn_consultar.grid(row=8, column=1, pady=15)
         btn_consultar.configure(bg=color[0])
 
-        btn_actualizar = tk.Button(win, text="ACTUALIZAR", command=self.actualizar, width=12, font='arial 11',
-                                        height=1)
+        btn_actualizar = tk.Button(win, text="ACTUALIZAR", command=self.actualizar, width=12, font='arial 11', height=1)
         btn_actualizar.grid(row=8, column=2, pady=15)
         btn_actualizar.configure(bg=color[7])
 
         self.mensaje = tk.Listbox(win, height=6, width=80, font='arial 11')
         self.mensaje.insert("end", 'PRECIONE CONSULTAR')
         self.mensaje.grid(row=9, columnspan=3, padx=10, pady=10)
+
+        self.prd_codigo = prd_codigo
 
         win.pack()
 

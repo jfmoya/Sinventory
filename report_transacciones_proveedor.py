@@ -6,8 +6,6 @@ import scale_sql_p3
 import os
 
 color = ('#99c6f0', '#9fd6f0', '#c6e3f9', '#ecf8f9', '#ecf1f2', '#f25235', '#eee860', '#64f28a', '#3749ac')
-cac_nombre = scale_sql_p3.cac_nombre_r()  # DEFAULT
-cac_codigo = scale_sql_p3.cac_codigo_r()  # DEFAULT
 
 
 class RTraPro:
@@ -61,7 +59,7 @@ class RTraPro:
             self.mensaje.delete(0, 'end')
             self.mensaje.insert(0, 'Formato de fecha incorrecto')
 
-    def __init__(self, master):
+    def __init__(self, master, cac_nombre):
         win = tk.Frame(master)
         
         lbl_1 = tk.Label(win, text=cac_nombre, bg=color[0], font='arial 14', fg=color[8])

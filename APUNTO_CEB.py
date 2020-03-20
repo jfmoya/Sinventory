@@ -1,4 +1,5 @@
 import CONF_APUNTO
+import scale_sql_p3
 import tkinter as tk
 
 import report_total_proveedores
@@ -8,6 +9,10 @@ import insert_proveedor
 import edit_proveedor
 import report_proveedores
 import edit_producto
+
+cac_nombre = scale_sql_p3.cac_nombre_r()  # DEFAULT
+cac_codigo = scale_sql_p3.cac_codigo_r()  # DEFAULT
+prd_codigo = CONF_APUNTO.prd_codigo  # SETTING
 
 
 class App:
@@ -50,76 +55,6 @@ class App:
         frame.tkraise()
 
 
-class RTotProF:
-    def __init__(self, master):
-        self.frame = tk.Frame(master)
-        self.frame.grid(row=0, column=0, sticky="nsew")
-        sframe = report_total_proveedores.RTotPro(self.frame)
-
-    def tkraise(self):
-        self.frame.tkraise()
-
-
-class RTraProF:
-    def __init__(self, master):
-        self.frame = tk.Frame(master)
-        self.frame.grid(row=0, column=0, sticky="nsew")
-        sframe = report_transacciones_proveedor.RTraPro(self.frame)
-
-    def tkraise(self):
-        self.frame.tkraise()
-
-
-class RTraF:
-    def __init__(self, master):
-        self.frame = tk.Frame(master)
-        self.frame.grid(row=0, column=0, sticky="nsew")
-        sframe = report_transacciones.RTra(self.frame)
-
-    def tkraise(self):
-        self.frame.tkraise()
-
-
-class IProF:
-    def __init__(self, master):
-        self.frame = tk.Frame(master)
-        self.frame.grid(row=0, column=0, sticky="nsew")
-        sframe = insert_proveedor.IPro(self.frame)
-
-    def tkraise(self):
-        self.frame.tkraise()
-
-
-class EProF:
-    def __init__(self, master):
-        self.frame = tk.Frame(master)
-        self.frame.grid(row=0, column=0, sticky="nsew")
-        sframe = edit_proveedor.EPro(self.frame)
-
-    def tkraise(self):
-        self.frame.tkraise()
-
-
-class RProF:
-    def __init__(self, master):
-        self.frame = tk.Frame(master)
-        self.frame.grid(row=0, column=0, sticky="nsew")
-        sframe = report_proveedores.RPro(self.frame)
-
-    def tkraise(self):
-        self.frame.tkraise()
-
-
-class EPrdF:
-    def __init__(self, master):
-        self.frame = tk.Frame(master)
-        self.frame.grid(row=0, column=0, sticky="nsew")
-        sframe = edit_producto.EPrd(self.frame)
-
-    def tkraise(self):
-        self.frame.tkraise()
-
-
 class InicioF:
     def __init__(self, master):
         self.frame = tk.Frame(master)
@@ -133,6 +68,76 @@ class InicioF:
         except:
             print('label 2 error')
             pass
+
+    def tkraise(self):
+        self.frame.tkraise()
+
+
+class RTotProF:
+    def __init__(self, master):
+        self.frame = tk.Frame(master)
+        self.frame.grid(row=0, column=0, sticky="nsew")
+        sframe = report_total_proveedores.RTotPro(self.frame, cac_nombre)
+
+    def tkraise(self):
+        self.frame.tkraise()
+
+
+class RTraProF:
+    def __init__(self, master):
+        self.frame = tk.Frame(master)
+        self.frame.grid(row=0, column=0, sticky="nsew")
+        sframe = report_transacciones_proveedor.RTraPro(self.frame, cac_nombre)
+
+    def tkraise(self):
+        self.frame.tkraise()
+
+
+class RTraF:
+    def __init__(self, master):
+        self.frame = tk.Frame(master)
+        self.frame.grid(row=0, column=0, sticky="nsew")
+        sframe = report_transacciones.RTra(self.frame, cac_nombre)
+
+    def tkraise(self):
+        self.frame.tkraise()
+
+
+class IProF:
+    def __init__(self, master):
+        self.frame = tk.Frame(master)
+        self.frame.grid(row=0, column=0, sticky="nsew")
+        sframe = insert_proveedor.IPro(self.frame, cac_nombre, cac_codigo)
+
+    def tkraise(self):
+        self.frame.tkraise()
+
+
+class EProF:
+    def __init__(self, master):
+        self.frame = tk.Frame(master)
+        self.frame.grid(row=0, column=0, sticky="nsew")
+        sframe = edit_proveedor.EPro(self.frame, cac_nombre)
+
+    def tkraise(self):
+        self.frame.tkraise()
+
+
+class RProF:
+    def __init__(self, master):
+        self.frame = tk.Frame(master)
+        self.frame.grid(row=0, column=0, sticky="nsew")
+        sframe = report_proveedores.RPro(self.frame, cac_nombre, cac_codigo)
+
+    def tkraise(self):
+        self.frame.tkraise()
+
+
+class EPrdF:
+    def __init__(self, master):
+        self.frame = tk.Frame(master)
+        self.frame.grid(row=0, column=0, sticky="nsew")
+        sframe = edit_producto.EPrd(self.frame, cac_nombre, prd_codigo)
 
     def tkraise(self):
         self.frame.tkraise()

@@ -6,8 +6,6 @@ import scale_sql_p3
 import os
 
 color = ('#99c6f0', '#9fd6f0', '#c6e3f9', '#ecf8f9', '#ecf1f2', '#f25235', '#eee860', '#64f28a', '#3749ac')
-cac_nombre = scale_sql_p3.cac_nombre_r()  # DEFAULT
-cac_codigo = scale_sql_p3.cac_codigo_r()  # DEFAULT
 
 
 class RPro:
@@ -28,14 +26,14 @@ class RPro:
                 self.mensaje.insert('end', 'Generar lista para exportar')
 
     def consultar(self):
-        self.lista = scale_sql_p3.proveedores_r(cac_codigo)
+        self.lista = scale_sql_p3.proveedores_r(self.cac_codigo)
         # print(self.lista)
         self.mensaje.delete(0, 'end')
         for line in self.lista:
             # print(line)
             self.mensaje.insert('end', f'{line[0]};{line[1]};{line[2]};{line[3]};{line[4]};{line[5]};{line[6]}')
 
-    def __init__(self, master):
+    def __init__(self, master, cac_nombre, cac_codigo):
         win = tk.Frame(master)
 
         lbl = tk.Label(win, text=cac_nombre, bg=color[0], font='arial 14', fg=color[8])
@@ -54,6 +52,7 @@ class RPro:
         self.mensaje.grid(row=8, columnspan=2, padx=10, pady=10)
 
         self.lista = []
+        self.cac_codigo = cac_codigo
 
         win.pack()
 
