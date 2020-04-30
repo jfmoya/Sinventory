@@ -11,6 +11,8 @@ database = config['DB']['DATABASE']
 sc_com = config['SERIAL']['SCALE_COM']
 pr_com = config['SERIAL']['PRINTER_COM']
 
+size = config['SCREEN']['SIZE']
+
 icon_path = config['ICON']['ICON_PATH']
 
 emulador = config['MODO']['EMULADOR']

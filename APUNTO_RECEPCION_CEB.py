@@ -210,7 +210,10 @@ try:
 except:
     pass
 win.title("APunto")
-win.geometry('1550x800')
+size = CONF_APUNTO.size
+sd = {'S': ['1366x768', 10, 7, 6, 2, 12, 2, 15, 12, 2, 15, 1316, 65, 10, 10],
+      'M': ['1550x800', 20, 15, 10, 5, 15, 3, 10, 15, 3, 10, 1550, 70, 20, 20]}
+win.geometry(sd[size][0])
 # -----------------------------------------------------------------------------------------
 lbl_1 = tkinter.Label(win, text=f'  {cac_nombre}', anchor="w", bg=color['azul'], font='arial 16',
                       fg=color['celeste'])
@@ -225,22 +228,22 @@ txt_in.bind('<+>', pluskey)
 txt_in.focus_set()
 txt_in.grid(columnspan=2, padx=15, pady=10, sticky="w")
 # -----------------------------------------------------------------------------------------
-lbl_2 = tkinter.Label(win, text="#SOCIO", bg=color['azul'], font='arial 50 bold', anchor="w",
+lbl_2 = tkinter.Label(win, text="#SOCIO", bg=color['azul'], font='arial 42 bold', anchor="w",
                       fg=color['celeste'])
-lbl_2.grid(columnspan=2, pady=20, sticky="EW")
+lbl_2.grid(columnspan=2, pady=sd[size][1], sticky="EW")
 # -----------------------------------------------------------------------------------------
 mensaje = tkinter.Listbox(win, height=2, font='arial 30')
 mensaje.insert("end", ' VERIFIQUE QUE LA BALANZA ESTE VACÍA.')
 mensaje.insert("end", ' Ingrese número de SOCIO...')
-mensaje.grid(columnspan=2, padx=15, sticky="EW")
+mensaje.grid(columnspan=2, padx=sd[size][2], sticky="EW")
 # -----------------------------------------------------------------------------------------
 lbl_3 = tkinter.Label(win, height=2, text="Peso Neto:...Kg \t\t Gavetas:...", bg=color['azul'],
-                      font='arial 40 bold', anchor="w", fg=color['celeste'])
-lbl_3.grid(columnspan=2, pady=10, sticky="EW")
+                      font='arial 35 bold', anchor="w", fg=color['celeste'])
+lbl_3.grid(columnspan=2, pady=sd[size][3], sticky="EW")
 # -----------------------------------------------------------------------------------------
 lbl_4 = tkinter.Label(win, height=2, text="Peso Bruto:...Kg \t\t Tara:...Kg \t Merma:...Kg", bg=color['azul'],
-                      font='arial 20', anchor="nw", fg=color['celeste'])
-lbl_4.grid(columnspan=2, pady=5, sticky="EW")
+                      font='arial 16', anchor="nw", fg=color['celeste'])
+lbl_4.grid(columnspan=2, pady=sd[size][4], sticky="EW")
 # -----------------------------------------------------------------------------------------
 chk_var1 = tkinter.IntVar()
 chck_1 = tkinter.Checkbutton(win, text="Control de Calidad Aprobado", variable=chk_var1, onvalue=1, offvalue=0,
@@ -256,23 +259,23 @@ lbl_5 = tkinter.Label(win, height=1, text=f"TOTAL DÍA: {totdia[0]}Kg           
                       font='arial 15 bold', fg=color['l_gris'], anchor='e')
 lbl_5.grid(column=1, row=6, rowspan=2, sticky="EW")
 # -----------------------------------------------------------------------------------------
-btn_cancelar = tkinter.Button(win, text="CANCELAR", command=cancelar, width=15, font='arial 15 bold',
-                              fg=color['l_gris'], height=3)
-btn_cancelar.grid(row=8, column=0, pady=10)
+btn_cancelar = tkinter.Button(win, text="CANCELAR", command=cancelar, width=sd[size][5], font='arial 15 bold',
+                              fg=color['l_gris'], height=sd[size][6])
+btn_cancelar.grid(row=8, column=0, pady=sd[size][7])
 btn_cancelar.configure(bg=color['rojo'])
 # -----------------------------------------------------------------------------------------
-btn_enter = tkinter.Button(win, text="CONTINUAR", command=seguir, width=15, font='arial 15 bold',
-                           fg=color['d_gris'], height=3)
-btn_enter.grid(row=8, column=1, pady=10)
+btn_enter = tkinter.Button(win, text="CONTINUAR", command=seguir, width=sd[size][8], font='arial 15 bold',
+                           fg=color['d_gris'], height=sd[size][9])
+btn_enter.grid(row=8, column=1, pady=sd[size][10])
 btn_enter.configure(bg=color['verde'])
 # -----------------------------------------------------------------------------------------
 try:
     logo2 = tkinter.PhotoImage(file=CONF_APUNTO.logo2_path)
-    lbl_6 = tkinter.Label(win, image=logo2, width=1550, height=70, anchor="e")
-    lbl_6.grid(pady=20, columnspan=2)
+    lbl_6 = tkinter.Label(win, image=logo2, width=sd[size][11], height=sd[size][12], anchor="e")
+    lbl_6.grid(pady=sd[size][13], columnspan=2)
 except:
     lbl_6 = tkinter.Label(win, text=f'  {cac_nombre}', width=132, anchor="e", bg='dark blue', font='arial 16',
                           fg=color['celeste'])
-    lbl_6.grid(columnspan=2, pady=20, sticky="EW")
+    lbl_6.grid(columnspan=2, pady=sd[size][14], sticky="EW")
 
 win.mainloop()
