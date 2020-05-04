@@ -13,6 +13,9 @@ pr_com = config['SERIAL']['PRINTER_COM']
 
 size = config['SCREEN']['SIZE']
 
+dia_1 = config['CORTES']['DIA_1']
+dia_2 = config['CORTES']['DIA_2']
+
 icon_path = config['ICON']['ICON_PATH']
 
 emulador = config['MODO']['EMULADOR']

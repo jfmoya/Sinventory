@@ -52,7 +52,8 @@ def proveedor_r(codigo):
         cnx = mysql.connector.connect(user=CONF_APUNTO.user, password=CONF_APUNTO.password,
                                       host=CONF_APUNTO.host, database=CONF_APUNTO.database)
         cursor = cnx.cursor()
-        q1 = f'SELECT CAST(pro_ruc AS CHAR), pro_nombre, pro_fecnac, pro_direccion, pro_telf, pro_correo ' \
+        q1 = f'SELECT CAST(pro_ruc AS CHAR), pro_nombre, pro_fecnac, pro_direccion, ' \
+             f'pro_telf, pro_correo, pro_sap ' \
              f'FROM proveedor WHERE pro_codigo + pro_cacreg = {codigo}'
         # print (q1)
         cursor.execute(q1)
@@ -74,6 +75,7 @@ def proveedores_r(codigo):
     cursor = cnx.cursor()
     Q = f'SELECT pro_codigo + pro_cacreg AS CODIGIO, \n' \
         f'\tCAST(pro_ruc AS CHAR) AS RUC, \n' \
+        f'\tpro_sap AS SAP, \n' \
         f'\tpro_nombre AS NOMBRE, \n' \
         f'\tpro_fecnac "FEC. NACIMIENTO", \n' \
         f'\tpro_direccion AS DIRECCION, \n' \
@@ -81,7 +83,7 @@ def proveedores_r(codigo):
         f'\tpro_correo AS CORREO \n' \
         f'FROM proveedor \n' \
         f'WHERE pro_cacreg = {codigo}'
-    # print(Q)
+    #print(Q)
     cursor.execute(Q)
     r = cursor.fetchall()
     r0 = [f'{d[0]}' for d in cursor.description]
@@ -144,20 +146,49 @@ def entrega():
     return r
 
 
+# def acum(idnum):
+#     """Argumento pro_codigo, retorna total acumulado desde el ultimo corte actual para pro_codigo"""
+#     cnx = mysql.connector.connect(user=CONF_APUNTO.user, password=CONF_APUNTO.password,
+#                                   host=CONF_APUNTO.host, database=CONF_APUNTO.database)
+#     cursor = cnx.cursor()
+#     q1 = f"SELECT sum(tra_pesoneto) FROM transaccion WHERE pro_cacreg + pro_codigo = {idnum} " \
+#          f"AND tra_fecreg > last_saturday()"  # last_monday() funcion en MYSQL
+#     # print (q1)
+#     cursor.execute(q1)
+#     for r in cursor:
+#         pass
+#     cursor.close()
+#     cnx.close()
+#     # print(r[0])
+#     return r[0]
+
+
 def acum(idnum):
-    """Argumento pro_codigo, retorna total acumulado desde el ultimo corte actual para pro_codigo"""
+    """Argumento idnum, retorna Decimal, total weight acumulado del periodo de corte actual para idnum"""
+    c1, c2 = int(CONF_APUNTO.dia_1), int(CONF_APUNTO.dia_2)
+    # print(c1, c2)
+    if datetime.datetime.now().day <= c1:
+        s_month = datetime.datetime.now().month - 1
+        s_day = c2 + 1
+    elif c1 < datetime.datetime.now().day <= c2:
+        s_month = datetime.datetime.now().month
+        s_day = c1 + 1
+    elif datetime.datetime.now().day > c2:
+        s_month = datetime.datetime.now().month
+        s_day = c2 + 1
+    s_date = datetime.datetime(datetime.datetime.now().year, s_month, s_day).strftime('"%Y-%m-%d"')
+
     cnx = mysql.connector.connect(user=CONF_APUNTO.user, password=CONF_APUNTO.password,
                                   host=CONF_APUNTO.host, database=CONF_APUNTO.database)
     cursor = cnx.cursor()
-    q1 = f"SELECT sum(tra_pesoneto) FROM transaccion WHERE pro_cacreg + pro_codigo = {idnum} " \
-         f"AND tra_fecreg > last_saturday()"  # last_monday() funcion en MYSQL
-    # print (q1)
+    q1 = f'SELECT SUM(tra_pesoneto) FROM transaccion WHERE pro_cacreg + pro_codigo = {idnum} ' \
+         f'AND tra_fecreg >= DATE({s_date})'
+    # print(q1)
     cursor.execute(q1)
     for r in cursor:
         pass
     cursor.close()
     cnx.close()
-    # print(r[0])
     return r[0]
 
 
@@ -259,7 +290,8 @@ def loader(archivo):
         return 0, 'ARCHIVO NO TIENE EL FORMATO', socios
 
 
-def p_loader(pro_cacreg='', pro_ruc='', pro_nombre='', pro_fecnac='', pro_direccion='', pro_telf='', pro_correo=''):
+def p_loader(pro_cacreg='', pro_ruc='', pro_nombre='', pro_fecnac='', pro_direccion='', pro_telf='',
+             pro_correo='', pro_sap=''):
     """Ingresa proveedor argumnetos ruc, nombre, fecnac, telf, correo. Verifica que no exista ruc previamente."""
     cnx = mysql.connector.connect(user=CONF_APUNTO.user, password=CONF_APUNTO.password,
                                   host=CONF_APUNTO.host, database=CONF_APUNTO.database)
@@ -270,9 +302,9 @@ def p_loader(pro_cacreg='', pro_ruc='', pro_nombre='', pro_fecnac='', pro_direcc
     (r,) = curs.fetchone()
     if not r:
         Q = f'INSERT INTO proveedor (pro_cacreg, pro_ruc, pro_nombre, pro_fecnac, ' \
-            f'pro_direccion, pro_telf, pro_correo) ' \
+            f'pro_direccion, pro_telf, pro_correo, pro_sap) ' \
             f'VALUES ({pro_cacreg}, "{pro_ruc}", "{pro_nombre}", "{pro_fecnac}", ' \
-            f'"{pro_direccion}", "{pro_telf}", "{pro_correo}") '
+            f'"{pro_direccion}", "{pro_telf}", "{pro_correo}", "{pro_sap}") '
         # print(Q)
         curs.execute(Q)
         cnx.commit()
@@ -291,7 +323,7 @@ def p_loader(pro_cacreg='', pro_ruc='', pro_nombre='', pro_fecnac='', pro_direcc
     return ms, r
 
 
-def p_update(pro_ruc='', pro_nombre='', pro_fecnac='', pro_direccion='', pro_telf='', pro_correo=''):
+def p_update(pro_ruc='', pro_nombre='', pro_fecnac='', pro_direccion='', pro_telf='', pro_correo='', pro_sap=''):
     """Ingresa proveedor argumnetos ruc, nombre, fecnac, telf, correo. Verifica que no exista ruc previamente."""
     cnx = mysql.connector.connect(user=CONF_APUNTO.user, password=CONF_APUNTO.password,
                                   host=CONF_APUNTO.host, database=CONF_APUNTO.database)
@@ -302,7 +334,8 @@ def p_update(pro_ruc='', pro_nombre='', pro_fecnac='', pro_direccion='', pro_tel
         f'pro_fecnac = "{pro_fecnac}", ' \
         f'pro_direccion = "{pro_direccion}", ' \
         f'pro_telf = "{pro_telf}", ' \
-        f'pro_correo = "{pro_correo}" ' \
+        f'pro_correo = "{pro_correo}", ' \
+        f'pro_sap = "{pro_sap}" ' \
         f'WHERE pro_ruc = {pro_ruc}'
     # print(Q)
     curs.execute(Q)
@@ -535,9 +568,10 @@ def reporte_total_proveedores(inicio, final):
     cnx = mysql.connector.connect(user=CONF_APUNTO.user, password=CONF_APUNTO.password,
                                   host=CONF_APUNTO.host, database=CONF_APUNTO.database)
     cursor = cnx.cursor()
-    Q = f'SELECT NOMBRE.CODIGO, NOMBRE.RUC, NOMBRE.NOMBRE, TOTAL.PESO, TOTAL.VALOR \n' \
+    Q = f'SELECT NOMBRE.CODIGO, NOMBRE.RUC, NOMBRE.SAP, NOMBRE.NOMBRE, TOTAL.PESO, TOTAL.VALOR \n' \
         f'FROM (SELECT pro_codigo + pro_cacreg AS CODIGO, \n' \
         f'\tCAST(pro_ruc AS CHAR) AS RUC, \n' \
+        f'\tpro_sap AS SAP, \n' \
         f'\tpro_nombre AS NOMBRE \n' \
         f'FROM proveedor) \n' \
         f'AS NOMBRE \n' \

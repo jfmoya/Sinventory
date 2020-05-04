@@ -1,6 +1,3 @@
-C:\Users\JUAN\Documents\python\APUNTO_CEB>pyinstaller --clean -w -F -i "C:\Users\JUAN\Documents\python\APUNTO_CEB\UTILIDADES\pcserv.ico" APUNTO_RECEPCION_CEB_small.py
+C:\Users\JUAN\Documents\python\APUNTO_CEB>pyinstaller --clean -w -F -i "C:\Users\JUAN\Documents\python\APUNTO_CEB\UTILIDADES\pcserv_g.ico" APUNTO_CEB_RECEPCION.py
 
-
-
-
-C:\Users\JUAN\Documents\python\APUNTO_CEB>pyinstaller --clean -w -F -i "C:\Users\JUAN\Documents\python\APUNTO_CEB\UTILIDADES\pcserv.ico" APUNTO_CEB.py
+C:\Users\JUAN\Documents\python\APUNTO_CEB>pyinstaller --clean -w -F -i "C:\Users\JUAN\Documents\python\APUNTO_CEB\UTILIDADES\pcserv_b.ico" APUNTO_CEB_ADM.py

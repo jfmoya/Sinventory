@@ -31,7 +31,8 @@ class RPro:
         self.mensaje.delete(0, 'end')
         for line in self.lista:
             # print(line)
-            self.mensaje.insert('end', f'{line[0]};{line[1]};{line[2]};{line[3]};{line[4]};{line[5]};{line[6]}')
+            self.mensaje.insert('end', f'{line[0]};{line[1]};{line[2]};{line[3]};'
+                                       f'{line[4]};{line[5]};{line[6]};{line[7]}')
 
     def __init__(self, master, cac_nombre, cac_codigo):
         win = tk.Frame(master)
@@ -58,5 +59,5 @@ class RPro:
 
 
 # root = tk.Tk()
-# app = RPro(root)
+# app = RPro(root, 'prueba', 1000)
 # root.mainloop()

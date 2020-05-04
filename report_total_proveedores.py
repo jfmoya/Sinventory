@@ -37,7 +37,7 @@ class RTotPro:
             if self.inicio > self.final:
                 raise ValueError
             else:
-                columns = (0, 1, 2, 3, 4)
+                columns = (0, 1, 2, 3, 4, 5)
                 r0, r1 = scale_sql_p3.reporte_total_proveedores(self.inicio, self.final)
                 # print(len(r1))
                 if len(r1) != 0:
@@ -100,5 +100,5 @@ class RTotPro:
 
 
 # root = tk.Tk()
-# app = RTotPro(root)
+# app = RTotPro(root, 'prueba')
 # root.mainloop()
