@@ -21,7 +21,8 @@ void loop(){
       delay(10);
       }
       
-    if(in_ms == "\x00"){
+    if(in_ms == "\x00"){   // Device ID in HEX to request weight data
+                           // Wont work with Arduino Serial Monitor
       if(weight == 0.0){
         Serial.print(pre);
         Serial.write(0x00);
